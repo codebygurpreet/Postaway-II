@@ -4,27 +4,26 @@ let users = [
 ];
 
 export default class UserModel {
-  constructor(id, name, email, password) {
-    this.id = id;
+  constructor(name, email, password) {
     this.name = name;
     this.email = email;
     this.password = password;
   }
 
   // Create a new user
-  static async signUp(name, email, password) {
-    const exists = users.find(user => user.email === email);
-    if (exists) return null;
+  // static async signUp(name, email, password) {
+  //   const exists = users.find(user => user.email === email);
+  //   if (exists) return null;
 
-    const newUser = new UserModel(users.length + 1, name, email, password);
-    users.push(newUser);
-    return newUser;
-  }
+  //   const newUser = new UserModel(users.length + 1, name, email, password);
+  //   users.push(newUser);
+  //   return newUser;
+  // }
 
   // Find a user by email
-  static async signIn(email) {
-    return users.find(user => user.email === email) || null;
-  }
+  // static async signIn(email) {
+  //   return users.find(user => user.email === email) || null;
+  // }
 
   // Get all users
   static async getAllUser() {

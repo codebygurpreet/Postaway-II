@@ -2,8 +2,14 @@ import UserModel from "./user.model.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import ApplicationError from "../../../utils/applicationError.js";
+import UserRepository from "./user.repository.js";
 
 export default class UserController {
+  
+  constructor(){
+    this.userRepository = new UserRepository();
+  }
+
   async signUp(req, res, next) {
     try {
       const { name, email, password } = req.body;
@@ -14,10 +20,15 @@ export default class UserController {
 
       const hashedPassword = await bcrypt.hash(password, 12);
 
-      const user = await UserModel.signUp(name, email, hashedPassword);
-      if (!user) {
+      const user = new UserModel(name, email, hashedPassword);
+      // console.log(user);
+      
+      const existingUser = await this.userRepository.signIn(email);
+      if(existingUser){
         throw new ApplicationError("User already exists with this email", 409);
       }
+
+      await this.userRepository.signUp(user)
 
       return res.status(201).json({
         success: true,
@@ -37,7 +48,7 @@ export default class UserController {
         throw new ApplicationError("Email and password are required", 400);
       }
 
-      const user = await UserModel.signIn(email);
+      const user = await this.userRepository.signIn(email);
       if (!user) {
         throw new ApplicationError("User not Found", 404);
       }

@@ -14,7 +14,7 @@ import likeRoutes from "./src/feature/like/like.routes.js";
 import bookmarkRoutes from "./src/feature/bookmark/bookmark.routes.js";
 
 // Import MongoDB
-import connectToMongoDB from "./src/config/mongodb.js";
+import {connectToMongoDB} from "./src/config/mongodb.js";
 
 // Create an instance of express app
 const app = express();
