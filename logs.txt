@@ -445,3 +445,29 @@
 [2025-08-15T16:50:52.734Z] info: GET /api/user/greet Request Body Is Empty
 [2025-08-25T17:22:05.041Z] info: GET / Request Body Is Empty
 [2025-08-25T17:22:05.136Z] info: GET /favicon.ico Request Body Is Empty
+[2025-08-27T17:02:49.401Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:03:25.505Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:03:33.201Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:05:58.883Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:07:35.296Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:07:49.154Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:08:02.441Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:08:16.308Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:31:37.035Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:32:10.125Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:53:55.743Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:54:21.233Z] info: GET /api/users/reset-password/5c189fb72bda7c44cf8f9f3b34051750ff8f4cd39e8fd37177f47dcac4af8e95 Request Body Is Empty
+[2025-08-27T17:56:10.598Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:57:04.904Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T17:59:20.244Z] info: POST /api/user/forget-password {"email":"gurri3@gmail.com"}
+[2025-08-27T18:02:52.192Z] info: POST /api/user/forget-password {"email":"ujjwalshakeya1@gmail.com"}
+[2025-08-27T18:05:51.871Z] info: POST /api/user/forget-password {"email":"gurri304@gmail.com"}
+[2025-08-28T06:00:31.181Z] info: POST /api/user/forget-password {"email":"gurri304@gmail.com"}
+[2025-08-29T16:02:34.991Z] info: POST /api/user/forget-password {"email":"gurri304@gmail.com"}
+[2025-08-29T17:30:45.286Z] info: POST /api/user/reset-password/6f0f3d947931903b27ae0d51a2814c3d0045239098a41d8d6064882c7bfee2d0 {"newPassword":"@@Password1"}
+[2025-08-29T17:31:10.323Z] info: POST /api/user/reset-password/6f0f3d947931903b27ae0d51a2814c3d0045239098a41d8d6064882c7bfee2d0 {"newPassword":"@@Password1"}
+[2025-08-29T17:31:14.453Z] info: POST /api/user/reset-password/6f0f3d947931903b27ae0d51a2814c3d0045239098a41d8d6064882c7bfee2d0 {"newPassword":"@@Password1"}
+[2025-08-29T17:32:09.776Z] info: POST /api/user/reset-password/6f0f3d947931903b27ae0d51a2814c3d0045239098a41d8d6064882c7bfee2d0 {"newPassword":"@@Password1"}
+[2025-08-29T17:33:50.455Z] info: POST /api/user/reset-password/6f0f3d947931903b27ae0d51a2814c3d0045239098a41d8d6064882c7bfee2d0 {"newPassword":"@@Password1"}
+[2025-08-29T17:34:51.352Z] info: POST /api/user/reset-password/6f0f3d947931903b27ae0d51a2814c3d0045239098a41d8d6064882c7bfee2d0 {"newPassword":"@@Password1"}
+[2025-08-29T17:36:40.849Z] info: POST /api/user/reset-password/6f0f3d947931903b27ae0d51a2814c3d0045239098a41d8d6064882c7bfee2d0 {"newPassword":"@@Password1"}
