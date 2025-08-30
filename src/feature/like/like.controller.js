@@ -1,7 +1,7 @@
 // import required packages
 import LikeModel from "./like.model.js";
 import PostModel from "../post/post.model.js";
-import UserModel from "../user/user.model.js";
+import UserModel from "../auth/auth.model.js";
 
 
 export default class LikeController {
@@ -60,7 +60,7 @@ export default class LikeController {
                 getAllLike
             });
 
-        }catch(err){
+        } catch (err) {
             console.error("Error in addingLike:", err.message);
             return res.status(500).json({
                 success: false,
@@ -91,7 +91,7 @@ export default class LikeController {
                 deleteLike
             });
 
-        }catch(err){
+        } catch (err) {
             console.error("Error in Deleting Like:", err.message);
             return res.status(500).json({
                 success: false,

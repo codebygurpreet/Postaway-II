@@ -471,3 +471,24 @@
 [2025-08-29T17:33:50.455Z] info: POST /api/user/reset-password/6f0f3d947931903b27ae0d51a2814c3d0045239098a41d8d6064882c7bfee2d0 {"newPassword":"@@Password1"}
 [2025-08-29T17:34:51.352Z] info: POST /api/user/reset-password/6f0f3d947931903b27ae0d51a2814c3d0045239098a41d8d6064882c7bfee2d0 {"newPassword":"@@Password1"}
 [2025-08-29T17:36:40.849Z] info: POST /api/user/reset-password/6f0f3d947931903b27ae0d51a2814c3d0045239098a41d8d6064882c7bfee2d0 {"newPassword":"@@Password1"}
+[2025-08-29T18:12:36.795Z] info: POST /api/user/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGIxY2VmNzJjNTAzYmFhMzgwN2EyMjEiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1NjQ5MTA2NiwiZXhwIjoxNzU3MDk1ODY2fQ.yNit4ezPsKVamN6al0BcgQ1MZ32LVK3wG5IHg_j-vqg"}
+[2025-08-29T18:13:16.813Z] info: POST /api/user/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGIxY2VmNzJjNTAzYmFhMzgwN2EyMjEiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1NjQ5MTA2NiwiZXhwIjoxNzU3MDk1ODY2fQ.yNit4ezPsKVamN6al0BcgQ1MZ32LVK3wG5IHg_j-vqg"}
+[2025-08-29T18:15:16.224Z] info: POST /api/user/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGIxY2VmNzJjNTAzYmFhMzgwN2EyMjEiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1NjQ5MTA2NiwiZXhwIjoxNzU3MDk1ODY2fQ.yNit4ezPsKVamN6al0BcgQ1MZ32LVK3wG5IHg_j-vqg"}
+[2025-08-29T18:17:47.499Z] info: POST /api/user/logout-all-devices Request Body Is Empty
+[2025-08-29T18:18:07.252Z] info: POST /api/user/logout-all-devices Request Body Is Empty
+[2025-08-29T18:18:59.437Z] info: POST /api/user/logout-all-devices Request Body Is Empty
+[2025-08-29T18:19:31.140Z] info: POST /api/user/logout-all-devices Request Body Is Empty
+[2025-08-29T18:20:50.830Z] info: POST /api/user/logout-all-devices {"userId":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1NjQ5MTU1NywiZXhwIjoxNzU2NDk1MTU3fQ._sK-A1TkiRZNywMic8J5_NA-zdypw7Mil1MZJwXIpwQ"}
+[2025-08-29T18:58:43.139Z] info: POST /api/user/logout-all-devices {"userId":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGIxY2VmNzJjNTAzYmFhMzgwN2EyMjEiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1NjQ5Mzg5MywiZXhwIjoxNzU3MDk4NjkzfQ.X8nzilO_VEV7J0-IVVVx-4gUveanTBgzc0Pw2Ht8J7E"}
+[2025-08-29T18:58:50.474Z] info: POST /api/user/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGIxY2VmNzJjNTAzYmFhMzgwN2EyMjEiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1NjQ5MTA2NiwiZXhwIjoxNzU3MDk1ODY2fQ.yNit4ezPsKVamN6al0BcgQ1MZ32LVK3wG5IHg_j-vqg"}
+[2025-08-29T18:59:28.865Z] info: POST /api/user/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGIxY2VmNzJjNTAzYmFhMzgwN2EyMjEiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1NjQ5Mzg5MywiZXhwIjoxNzU3MDk4NjkzfQ.X8nzilO_VEV7J0-IVVVx-4gUveanTBgzc0Pw2Ht8J7E"}
+[2025-08-30T16:51:16.651Z] info: POST /api/user/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGIzMmI2YTkzNzc5MzA2ZTYwNTA5MGYiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1NjU3MjU0MSwiZXhwIjoxNzU3MTc3MzQxfQ.n1MezfPnK3MgSTDPOwwhcb7KymLTsmI6WhWy8TrmTUk"}
+[2025-08-30T16:53:43.401Z] info: POST /api/user/logout-all-devices Request Body Is Empty
+[2025-08-30T16:54:21.531Z] info: POST /api/user/logout-all-devices Request Body Is Empty
+[2025-08-30T16:54:31.067Z] info: POST /api/user/logout-all-devices Request Body Is Empty
+[2025-08-30T17:00:01.948Z] info: POST /api/user/logout-all-devices Request Body Is Empty
+[2025-08-30T17:01:06.625Z] info: POST /api/user/logout-all-devices Request Body Is Empty
+[2025-08-30T17:25:45.228Z] info: POST /api/user/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGIzMzNlNWNjZDc0YjI5YTk1NGE4ZjciLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1NjU3NDcwOCwiZXhwIjoxNzU3MTc5NTA4fQ.XEut6LONmvfBuFfonsmXlhKDRbR28Q_5CCFljysOyFE"}
+[2025-08-30T17:26:05.402Z] info: POST /api/user/logout-all-devices Request Body Is Empty
+[2025-08-30T17:26:45.169Z] info: POST /api/user/forget-password {"email":"gurri304@gmail.com"}
+[2025-08-30T17:27:18.368Z] info: POST /api/user/reset-password/8cc90feeace0de6f1db1e9eb84e42e47487b29e0e0176aa5a84c70f0ba9a0b17 {"newPassword":"@@Password1"}

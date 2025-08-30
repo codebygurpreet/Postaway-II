@@ -1,15 +1,15 @@
-import UserModel from "./user.model.js";
-import UserRepository from "./user.repository.js";
+import AuthModel from "./auth.model.js";
+import AuthRepository from "./auth.repository.js";
 import ApplicationError from "../../../utils/applicationError.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 
-export default class UserController {
-  
-  constructor(){
-    this.userRepository = new UserRepository();
+export default class AuthController {
+
+  constructor() {
+    this.authRepository = new AuthRepository();
   }
 
   async signUp(req, res, next) {
@@ -22,15 +22,15 @@ export default class UserController {
 
       const hashedPassword = await bcrypt.hash(password, 12);
 
-      const user = new UserModel(name, email, hashedPassword);
+      const user = new AuthModel(name, email, hashedPassword);
       // console.log(user);
-      
-      const existingUser = await this.userRepository.findByEmail(email);
-      if(existingUser){
+
+      const existingUser = await this.authRepository.findByEmail(email);
+      if (existingUser) {
         throw new ApplicationError("User already exists with this email", 409);
       }
 
-      await this.userRepository.signUp(user)
+      await this.authRepository.signUp(user)
 
       return res.status(201).json({
         success: true,
@@ -50,7 +50,7 @@ export default class UserController {
         throw new ApplicationError("Email and password are required", 400);
       }
 
-      const user = await this.userRepository.findByEmail(email);
+      const user = await this.authRepository.findByEmail(email);
       if (!user) {
         throw new ApplicationError("User not Found", 404);
       }
@@ -61,33 +61,51 @@ export default class UserController {
       }
 
       const token = jwt.sign(
-        { userID: user.id, email: user.email },
+        { userID: user._id, email: user.email },
         process.env.JWT_SECRET,
         { expiresIn: "1h" }
       );
 
-      return res.status(200).send(token);
+      const refreshToken = jwt.sign(
+        {
+          userID: user._id,
+          email: user.email,
+        },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "7d",
+        }
+      );
+
+      await this.authRepository.addRefreshToken(user._id, refreshToken);
+
+      return res.status(200).json({
+        message: "Login successful",
+        token,
+        refreshToken,
+        expiresIn: "1h",
+      });
     } catch (err) {
       next(err);
     }
   }
 
-  async forgotPassword(req,res,next){
-    try{
-      const {email} = req.body;
-      const user = await this.userRepository.findByEmail(email);
-      if(!user){
+  async forgotPassword(req, res, next) {
+    try {
+      const { email } = req.body;
+      const user = await this.authRepository.findByEmail(email);
+      if (!user) {
         throw new ApplicationError("user not found", 404)
       }
       const resetToken = crypto.randomBytes(32).toString('hex');
-      const resetTokenExpiry = Date.now() + 15*60*1000;
+      const resetTokenExpiry = Date.now() + 15 * 60 * 1000;
 
       // save token in mongodb
-      await this.userRepository.setResetToken(user.email, resetToken, resetTokenExpiry);
+      await this.authRepository.setResetToken(user.email, resetToken, resetTokenExpiry);
 
       // create transportor
       const transporter = nodemailer.createTransport({
-        service:"gmail",
+        service: "gmail",
         auth: {
           user: process.env.EMAIL_USER,
           pass: process.env.EMAIL_PASS
@@ -99,17 +117,17 @@ export default class UserController {
         from: process.env.EMAIL_USER,
         to: user.email,
         subject: "Password reset Request",
-        html:`<p>You requested a password reset</p>
+        html: `<p>You requested a password reset</p>
         <p>Click here to reset: <a href="${resetLink}">${resetLink}</a></p>`
       })
 
-      res.status(200).json({message:"password reset link send to email"})
-    }catch(err){
+      res.status(200).json({ message: "password reset link send to email" })
+    } catch (err) {
       next(err);
     }
   }
 
-// Reset with token
+  // Reset with token
   async ResetPasswordWithToken(req, res, next) {
     try {
       const { token } = req.params;
@@ -121,7 +139,7 @@ export default class UserController {
       }
 
       // find user by token
-      const user = await this.userRepository.findByResetToken(token);
+      const user = await this.authRepository.findByResetToken(token);
       console.log(user);
       if (!user) {
         throw new ApplicationError("Token is invalid or expired", 400);
@@ -130,9 +148,49 @@ export default class UserController {
       // hash password
       const hashedPassword = await bcrypt.hash(newPassword, 12);
 
-      await this.userRepository.updatePasswordWithToken(token, hashedPassword);
+      await this.authRepository.updatePasswordWithToken(token, hashedPassword);
 
       return res.status(200).json({ message: "Password reset successful" });
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  // logout
+  async Logout(req, res, next) {
+    try {
+      const { refreshToken } = req.body;
+
+      const user = await this.authRepository.findByRefreshToken(refreshToken);
+
+      // user not found
+      if (!user) {
+        throw new ApplicationError("Invalid refresh token", 400);
+      }
+
+      await this.authRepository.removeRefreshToken(user._id, refreshToken);
+
+      return res.status(200).json({ message: "Logged out successfully" });
+    } catch (err) {
+      next(err);
+    }
+  }
+
+
+
+  // logout all
+  async LogoutAll(req, res, next) {
+    try {
+      const userId = req.userID;
+      console.log(userId)
+
+      // user not found
+      if (!userId) {
+        throw new ApplicationError("User ID required", 400);
+      }
+      await this.authRepository.removeAllRefreshToken(userId);
+
+      return res.status(200).json({ message: "Logged out from all devices" });
     } catch (err) {
       next(err);
     }

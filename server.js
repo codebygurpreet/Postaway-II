@@ -7,14 +7,14 @@ import loggerMiddleware from "./src/middleware/logger.middleware.js";
 import errorHandler from "./src/middleware/errorHandler.middleware.js";
 
 // Import route files
-import userRoutes from "./src/feature/user/user.routes.js";
+import authRoutes from "./src/feature/auth/auth.routes.js";
 import postsRoutes from "./src/feature/post/post.routes.js";
 import commentRoutes from "./src/feature/comment/comment.routes.js";
 import likeRoutes from "./src/feature/like/like.routes.js";
 import bookmarkRoutes from "./src/feature/bookmark/bookmark.routes.js";
 
 // Import MongoDB
-import {connectToMongoDB} from "./src/config/mongodb.js";
+import { connectToMongoDB } from "./src/config/mongodb.js";
 
 // Create an instance of express app
 const app = express();
@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true })); // Parse form data
 app.use(loggerMiddleware); // Log every request
 
 // Routes
-app.use("/api/user", userRoutes);
+app.use("/api/user", authRoutes);
 app.use("/api/posts", postsRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);
