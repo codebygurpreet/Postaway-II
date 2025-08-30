@@ -8,6 +8,7 @@ import errorHandler from "./src/middleware/errorHandler.middleware.js";
 
 // Import route files
 import authRoutes from "./src/feature/auth/auth.routes.js";
+import userRoutes from "./src/feature/user/user.routes.js";
 import postsRoutes from "./src/feature/post/post.routes.js";
 import commentRoutes from "./src/feature/comment/comment.routes.js";
 import likeRoutes from "./src/feature/like/like.routes.js";
@@ -26,6 +27,7 @@ app.use(loggerMiddleware); // Log every request
 
 // Routes
 app.use("/api/user", authRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/posts", postsRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);

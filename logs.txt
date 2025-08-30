@@ -492,3 +492,8 @@
 [2025-08-30T17:26:05.402Z] info: POST /api/user/logout-all-devices Request Body Is Empty
 [2025-08-30T17:26:45.169Z] info: POST /api/user/forget-password {"email":"gurri304@gmail.com"}
 [2025-08-30T17:27:18.368Z] info: POST /api/user/reset-password/8cc90feeace0de6f1db1e9eb84e42e47487b29e0e0176aa5a84c70f0ba9a0b17 {"newPassword":"@@Password1"}
+[2025-08-30T18:36:50.169Z] info: GET /api/user/get-details/68b333e5ccd74b29a954a8f7 Request Body Is Empty
+[2025-08-30T18:37:51.754Z] info: GET /api/user/get-details/68b333e5ccd74b29a954a8f7 Request Body Is Empty
+[2025-08-30T18:38:44.405Z] info: GET /api/user/get-details/68b333e5ccd74b29a954a8f7 Request Body Is Empty
+[2025-08-30T18:39:20.521Z] info: GET /api/user/get-details/68b333e5ccd74b29a954a8f7 Request Body Is Empty
+[2025-08-30T18:40:47.729Z] info: GET /api/user/get-details/68b333e5ccd74b29a954a8f7 Request Body Is Empty
