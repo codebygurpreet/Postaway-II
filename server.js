@@ -26,8 +26,8 @@ app.use(express.urlencoded({ extended: true })); // Parse form data
 app.use(loggerMiddleware); // Log every request
 
 // Routes
-app.use("/api/user", authRoutes);
-app.use("/api/user", userRoutes);
+app.use("/api/users", authRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api/posts", postsRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);

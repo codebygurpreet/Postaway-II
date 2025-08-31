@@ -17,6 +17,6 @@ router.get('/get-details/:userId', jwtAuth, (req, res, next)=> userController.ge
 router.get('/get-all-details', jwtAuth, (req, res, next)=> userController.getAllUser(req, res, next));
 
 // get Update user details
-// router.get('/update-details/:userId', jwtAuth, (req, res, next)=> userController.updateUser(req, res, next));
+router.post('/update-details/:userId', jwtAuth, (req, res, next)=> userController.updateById(req, res, next));
 
 export default router

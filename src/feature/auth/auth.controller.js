@@ -14,15 +14,15 @@ export default class AuthController {
 
   async signUp(req, res, next) {
     try {
-      const { name, email, password } = req.body;
+      const { name, email, password, gender } = req.body;
 
-      if (!name || !email || !password) {
+      if (!name || !email || !password || !gender) {
         throw new ApplicationError("All fields are required", 400);
       }
 
       const hashedPassword = await bcrypt.hash(password, 12);
 
-      const user = new AuthModel(name, email, hashedPassword);
+      const user = new AuthModel(name, email, hashedPassword,gender);
       // console.log(user);
 
       const existingUser = await this.authRepository.findByEmail(email);

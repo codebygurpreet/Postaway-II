@@ -19,11 +19,11 @@ export default class UserRepository{
         const collection = db.collection(this.collection)
         const user = await collection.findOne(
             {_id: new ObjectId(userId)}, // filter
-            {projection: {name:1, _id:1}} // select only name
+            {projection: {name:1, gender: 1, _id:1}} // select only name
         )
         return user;
         }catch(err){
-            throw new ApplicationError("SOmething went wrong with the database", 500)
+            throw new ApplicationError("Something went wrong with the database", 500)
         }
     }
 
@@ -40,17 +40,35 @@ export default class UserRepository{
         ).toArray();
         return allUser;
         }catch(err){
-            throw new ApplicationError("SOmething went wrong with the database", 500)
+            throw new ApplicationError("Something went wrong with the database", 500)
         }
     }
 
     // 3. async update-details (no passwords)
-    // async getAllUser(){
-    //     try{
-       
-    //     }catch(err){
-    //         throw new ApplicationError("SOmething went wrong with the database", 500)
-    //     }
-    // }
+    async updateById(userID, data){
+        try{
+        // step 1. getting dbs
+        const db = getDB();
+
+        // step 2. getting the collection
+        const collection = db.collection(this.collection);
+
+        // step 3. update and return updated doc
+        const updatedUser = await collection.findOneAndUpdate(
+            {_id: new ObjectId(userID)}, // filter
+            {$set: data}, // updating field
+            {  
+                returnDocument: "after",
+                projection: {
+                    password:0, 
+                    refreshTokens:0
+                }
+            } // return the updated document instead of the old one and project data
+        );
+        return updatedUser;
+        }catch(err){
+            throw new ApplicationError("Something went wrong with the database", 500)
+        }
+    }
 
 }
