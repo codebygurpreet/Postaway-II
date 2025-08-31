@@ -521,3 +521,12 @@
 [2025-08-31T11:53:02.074Z] info: POST /api/users/update-details/68b4211e7550245eb5ce1392 {"gender":"MAle"}
 [2025-08-31T11:53:09.534Z] info: POST /api/users/update-details/68b4211e7550245eb5ce1392 {"gender":"female"}
 [2025-08-31T11:53:16.516Z] info: POST /api/users/update-details/68b4211e7550245eb5ce1392 {"gender":"male"}
+[2025-08-31T17:12:52.241Z] info: POST /api/posts/ Request Body Is Empty
+[2025-08-31T17:13:04.224Z] info: POST /api/posts/ Request Body Is Empty
+[2025-08-31T17:13:22.985Z] info: POST /api/posts/ Request Body Is Empty
+[2025-08-31T17:13:46.813Z] info: POST /api/posts/ Request Body Is Empty
+[2025-08-31T17:21:22.749Z] info: POST /api/posts/ Request Body Is Empty
+[2025-08-31T17:22:07.444Z] info: POST /api/posts/ Request Body Is Empty
+[2025-08-31T17:22:43.604Z] info: POST /api/posts/ Request Body Is Empty
+[2025-08-31T17:42:41.530Z] info: POST /api/posts/ Request Body Is Empty
+[2025-08-31T17:42:52.264Z] info: POST /api/posts/ Request Body Is Empty

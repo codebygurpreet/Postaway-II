@@ -5,7 +5,7 @@ import {ObjectId} from "mongodb";
 
 export default class AuthRepository {
     constructor() {
-        this.collection = 'user';
+        this.collection = 'users';
     }
 
     async signUp(newUser) {

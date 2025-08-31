@@ -1,8 +1,14 @@
 // post.controller.js
 import ApplicationError from "../../../utils/applicationError.js";
 import PostModel from "./post.model.js";
+import PostRepository from "./post.repository.js";
 
 export default class PostController {
+
+  constructor(){
+    this.postRepository = new PostRepository();
+  }
+
   async createNewPost(req, res, next) {
     try {
       const userId = req.userID;
@@ -21,211 +27,209 @@ export default class PostController {
       const postStatus = allowedStatuses.includes(status) ? status : "published";
 
       const imageUrl = req.file.filename;
-      const post = await PostModel.createNewPost(
+      const newPost = new PostModel(
         userId,
-        caption,
+        caption.trim(),
         imageUrl,
         postStatus
       );
 
-      if (!post) {
-        throw new ApplicationError("Failed to create post", 500);
-      }
+      await this.postRepository.createNewPost(newPost)
 
       return res
         .status(201)
-        .json({ success: true, message: "Post created successfully", post });
+        .json({ success: true, message: "Post created successfully", newPost });
     } catch (err) {
       next(err);
     }
   }
 
-  // 5. Get all posts (Pagination)
-  async getAll(req, res, next) {
-    try {
-      const caption = req.query.caption || "";
-      const page = parseInt(req.query.page) || 1;
-      const limit = parseInt(req.query.limit) || 10;
+  // // 5. Get all posts (Pagination)
+  // async getAll(req, res, next) {
+  //   try {
+  //     const caption = req.query.caption || "";
+  //     const page = parseInt(req.query.page) || 1;
+  //     const limit = parseInt(req.query.limit) || 10;
 
-      const result = await PostModel.findAll(page, limit, caption);
+  //     const result = await PostModel.findAll(page, limit, caption);
 
-      // Application error handling moved here
-      if (!result.posts || result.posts.length === 0) {
-        throw new ApplicationError("Posts Not Found", 404);
-      }
+  //     // Application error handling moved here
+  //     if (!result.posts || result.posts.length === 0) {
+  //       throw new ApplicationError("Posts Not Found", 404);
+  //     }
 
-      res.status(200).json({
-        success: true,
-        message: "All posts",
-        data: result.posts,
-        pagination: {
-          totalPosts: result.totalPosts,
-          totalPages: result.totalPages,
-          currentPage: result.currentPage,
-        },
-      });
-    } catch (err) {
-      next(err);
-    }
-  }
+  //     res.status(200).json({
+  //       success: true,
+  //       message: "All posts",
+  //       data: result.posts,
+  //       pagination: {
+  //         totalPosts: result.totalPosts,
+  //         totalPages: result.totalPages,
+  //         currentPage: result.currentPage,
+  //       },
+  //     });
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // }
 
-  async getPostById(req, res, next) {
-    try {
-      const id = parseInt(req.params.id);
-      if (!id) throw new ApplicationError("Invalid post ID", 400);
+  // async getPostById(req, res, next) {
+  //   try {
+  //     const id = parseInt(req.params.id);
+  //     if (!id) throw new ApplicationError("Invalid post ID", 400);
 
-      const post = await PostModel.getPostById(id);
-      if (!post) throw new ApplicationError("Post not found", 404);
+  //     const post = await PostModel.getPostById(id);
+  //     if (!post) throw new ApplicationError("Post not found", 404);
 
-      return res
-        .status(200)
-        .json({ success: true, message: "Post retrieved", post });
-    } catch (err) {
-      next(err);
-    }
-  }
+  //     return res
+  //       .status(200)
+  //       .json({ success: true, message: "Post retrieved", post });
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // }
 
-  async getPostByUserCredentials(req, res, next) {
-    try {
-      const userId = req.userID;
-      if (!userId) throw new ApplicationError("User ID required", 400);
+  // async getPostByUserCredentials(req, res, next) {
+  //   try {
+  //     const userId = req.userID;
+  //     if (!userId) throw new ApplicationError("User ID required", 400);
 
-      const posts = await PostModel.getPostByUserCredentials(userId);
-      if (!posts) throw new ApplicationError("No Post Found", 404)
+  //     const posts = await PostModel.getPostByUserCredentials(userId);
+  //     if (!posts) throw new ApplicationError("No Post Found", 404)
 
-      return res
-        .status(200)
-        .json({ success: true, message: `Posts by user ${userId}`, posts });
-    } catch (err) {
-      next(err);
-    }
-  }
+  //     return res
+  //       .status(200)
+  //       .json({ success: true, message: `Posts by user ${userId}`, posts });
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // }
 
-  async updatePostById(req, res, next) {
-    try {
-      const userId = req.userID;
-      const postId = parseInt(req.params.id);
-      const data = req.body;
+  // async updatePostById(req, res, next) {
+  //   try {
+  //     const userId = req.userID;
+  //     const postId = parseInt(req.params.id);
+  //     const data = req.body;
 
-      if (!postId || !userId) throw new ApplicationError("Missing post ID or user ID", 400);
+  //     if (!postId || !userId) throw new ApplicationError("Missing post ID or user ID", 400);
 
-      const updatedPost = await PostModel.updatePostById(postId, userId, data);
-      if (!updatedPost)
-        throw new ApplicationError("Post not found or update failed", 404);
+  //     const updatedPost = await PostModel.updatePostById(postId, userId, data);
+  //     if (!updatedPost)
+  //       throw new ApplicationError("Post not found or update failed", 404);
 
-      res.status(200).json({
-        success: true,
-        message: "Post updated successfully",
-        updatedPost,
-      });
-    } catch (err) {
-      next(err);
-    }
-  }
+  //     res.status(200).json({
+  //       success: true,
+  //       message: "Post updated successfully",
+  //       updatedPost,
+  //     });
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // }
 
-  async deletePostById(req, res, next) {
-    try {
-      const userId = req.userID;
-      const postId = parseInt(req.params.id);
-      if (!postId) throw new ApplicationError("Post ID is required", 400);
+  // async deletePostById(req, res, next) {
+  //   try {
+  //     const userId = req.userID;
+  //     const postId = parseInt(req.params.id);
+  //     if (!postId) throw new ApplicationError("Post ID is required", 400);
 
-      const deletePost = await PostModel.deletePostById(postId, userId);
-      if (!deletePost) throw new ApplicationError("Post not found", 404);
+  //     const deletePost = await PostModel.deletePostById(postId, userId);
+  //     if (!deletePost) throw new ApplicationError("Post not found", 404);
 
-      res.status(201).json({
-        success: true,
-        message: "Post deleted successfully",
-        deletePost,
-      });
-    } catch (err) {
-      next(err);
-    }
-  }
+  //     res.status(201).json({
+  //       success: true,
+  //       message: "Post deleted successfully",
+  //       deletePost,
+  //     });
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // }
 
-  // Additional Task
-  // 1. Filter by caption
-  async filterByCaption(req, res, next) {
-    try {
-      const caption = req.query.caption;
-      if (!caption) throw new ApplicationError("Caption is not defined", 400);
+  // // Additional Task
+  // // 1. Filter by caption
+  // async filterByCaption(req, res, next) {
+  //   try {
+  //     const caption = req.query.caption;
+  //     if (!caption) throw new ApplicationError("Caption is not defined", 400);
 
-      const filteredPosts = await PostModel.filterByCaption(caption);
+  //     const filteredPosts = await PostModel.filterByCaption(caption);
 
-      if (filteredPosts.length === 0)
-        throw new ApplicationError("Post Not found", 404);
+  //     if (filteredPosts.length === 0)
+  //       throw new ApplicationError("Post Not found", 404);
 
-      res.status(200).json({
-        success: true,
-        message: "Post retrieved by caption",
-        filteredPosts,
-      });
-    } catch (err) {
-      next(err);
-    }
-  }
+  //     res.status(200).json({
+  //       success: true,
+  //       message: "Post retrieved by caption",
+  //       filteredPosts,
+  //     });
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // }
 
-  // 2. Add a feature to save a post as a draft and to achieve a post
-  async postStatus(req, res, next) {
-    try {
-      const postID = req.params.id;
-      const userID = req.userID;
-      const { status } = req.body;
+  // // 2. Add a feature to save a post as a draft and to achieve a post
+  // async postStatus(req, res, next) {
+  //   try {
+  //     const postID = req.params.id;
+  //     const userID = req.userID;
+  //     const { status } = req.body;
 
-      if (!postID || !userID) throw new ApplicationError("Missing post ID or user ID", 400);
+  //     if (!postID || !userID) throw new ApplicationError("Missing post ID or user ID", 400);
 
-      const result = await PostModel.postStatus(userID, postID, status);
+  //     const result = await PostModel.postStatus(userID, postID, status);
 
-      if (result.error === "NOT_FOUND") {
-        throw new ApplicationError("Post Not Found", 404);
-      }
+  //     if (result.error === "NOT_FOUND") {
+  //       throw new ApplicationError("Post Not Found", 404);
+  //     }
 
-      if (result.error === "INVALID_TRANSITION") {
-        throw new ApplicationError(
-          `Invalid status transition from '${result.currentStatus}' to '${result.newStatus}'`,
-          400
-        );
-      }
+  //     if (result.error === "INVALID_TRANSITION") {
+  //       throw new ApplicationError(
+  //         `Invalid status transition from '${result.currentStatus}' to '${result.newStatus}'`,
+  //         400
+  //       );
+  //     }
 
-      res.status(200).json({
-        success: true,
-        updatedStatus: result.updatedPost,
-      });
-    } catch (err) {
-      next(err);
-    }
-  }
+  //     res.status(200).json({
+  //       success: true,
+  //       updatedStatus: result.updatedPost,
+  //     });
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // }
 
-  // 3. Implement sorting of posts based on user engagement and date
-  async getSortedPosts(req, res, next) {
-    try {
-      const allowedSorts = ["engagement", "date"];
-      const sortBy = req.query.sortBy;
+  // // 3. Implement sorting of posts based on user engagement and date
+  // async getSortedPosts(req, res, next) {
+  //   try {
+  //     const allowedSorts = ["engagement", "date"];
+  //     const sortBy = req.query.sortBy;
 
-      // if sortBy is given but invalid → throw error
-      if (sortBy && !allowedSorts.includes(sortBy)) {
-        throw new ApplicationError(
-          `Invalid sort option '${sortBy}'. Allowed values are: ${allowedSorts.join(", ")}`,
-          400
-        );
-      }
+  //     // if sortBy is given but invalid → throw error
+  //     if (sortBy && !allowedSorts.includes(sortBy)) {
+  //       throw new ApplicationError(
+  //         `Invalid sort option '${sortBy}'. Allowed values are: ${allowedSorts.join(", ")}`,
+  //         400
+  //       );
+  //     }
 
-      // default to "engagement"
-      const finalSort = sortBy || "engagement";
+  //     // default to "engagement"
+  //     const finalSort = sortBy || "engagement";
 
-      const sortedPosts = await PostModel.getPostsSorted(finalSort);
+  //     const sortedPosts = await PostModel.getPostsSorted(finalSort);
 
-      // if no posts found → throw error
-      if (!sortedPosts || sortedPosts.length === 0) {
-        throw new ApplicationError("No posts found", 404);
-      }
+  //     // if no posts found → throw error
+  //     if (!sortedPosts || sortedPosts.length === 0) {
+  //       throw new ApplicationError("No posts found", 404);
+  //     }
 
-      res.status(200).json({
-        success: true,
-        message: `Sorted posts by ${finalSort}`,
-        data: sortedPosts,
-      });
-    } catch (err) {
-      next(err); // pass error to global error handler
-    }
-  }
+  //     res.status(200).json({
+  //       success: true,
+  //       message: `Sorted posts by ${finalSort}`,
+  //       data: sortedPosts,
+  //     });
+  //   } catch (err) {
+  //     next(err); // pass error to global error handler
+  //   }
+  // }
 }
