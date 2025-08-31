@@ -497,3 +497,8 @@
 [2025-08-30T18:38:44.405Z] info: GET /api/user/get-details/68b333e5ccd74b29a954a8f7 Request Body Is Empty
 [2025-08-30T18:39:20.521Z] info: GET /api/user/get-details/68b333e5ccd74b29a954a8f7 Request Body Is Empty
 [2025-08-30T18:40:47.729Z] info: GET /api/user/get-details/68b333e5ccd74b29a954a8f7 Request Body Is Empty
+[2025-08-31T09:18:32.592Z] info: GET /api/user/get-all-details Request Body Is Empty
+[2025-08-31T09:18:55.363Z] info: GET /api/user/get-all-details Request Body Is Empty
+[2025-08-31T09:20:00.416Z] info: GET /api/user/get-all-details Request Body Is Empty
+[2025-08-31T09:21:14.048Z] info: GET /api/user/get-all-details Request Body Is Empty
+[2025-08-31T09:22:23.070Z] info: POST /api/user/logout-all-devices Request Body Is Empty

@@ -8,7 +8,7 @@ export default class UserController {
         this.userRepository = new UserRepository();
     }
 
-    // async get individual users
+    // 1. async get-details (no passwords)
     async getUser(req, res, next) {
         try {
             const userID = req.params.userId;
@@ -25,4 +25,27 @@ export default class UserController {
             next(err);
         }
     }
+
+    // 2. async get-all-details (no passwords)
+    async getAllUser(req, res, next) {
+        try {
+            const allUser = await this.userRepository.getAllUser();
+
+            return res.status(200).json({
+                message: "All user details retrieved succesfully",
+                users: allUser
+            });
+        } catch (err) {
+            next(err);
+        }
+    }
+
+    // 3. async update-details (no passwords)
+    // async updateUser(req, res, next) {
+    //     try {
+           
+    //     } catch (err) {
+    //         next(err);
+    //     }
+    // }
 }
