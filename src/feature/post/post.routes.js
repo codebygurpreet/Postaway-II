@@ -15,11 +15,11 @@ router.post("/", jwtAuth, upload.single("imageUrl"), (req, res, next) =>
 );
 
 // // Get all posts
-// router.get("/all", (req, res, next) =>
-//   postController.getAll(req, res, next)
-// );
+router.get("/all", (req, res, next) =>
+  postController.getAll(req, res, next)
+);
 
-// // Get posts by logged-in user
+// Get posts by logged-in user
 // router.get("/", jwtAuth, (req, res, next) =>
 //   postController.getPostByUserCredentials(req, res, next)
 // );
@@ -34,10 +34,10 @@ router.post("/", jwtAuth, upload.single("imageUrl"), (req, res, next) =>
 //   postController.getSortedPosts(req, res, next)
 // );
 
-// // Get post by ID
-// router.get("/:id", (req, res, next) =>
-//   postController.getPostById(req, res, next)
-// );
+// Get post by ID
+router.get("/:id", (req, res, next) =>
+  postController.getPostById(req, res, next)
+);
 
 // // Update post by ID
 // router.put("/:id", upload.none(), jwtAuth, (req, res, next) =>

@@ -4,8 +4,7 @@ import PostModel from "./post.model.js";
 import PostRepository from "./post.repository.js";
 
 export default class PostController {
-
-  constructor(){
+  constructor() {
     this.postRepository = new PostRepository();
   }
 
@@ -24,7 +23,9 @@ export default class PostController {
 
       // Allow only valid statuses
       const allowedStatuses = ["published", "draft"];
-      const postStatus = allowedStatuses.includes(status) ? status : "published";
+      const postStatus = allowedStatuses.includes(status)
+        ? status
+        : "published";
 
       const imageUrl = req.file.filename;
       const newPost = new PostModel(
@@ -34,7 +35,7 @@ export default class PostController {
         postStatus
       );
 
-      await this.postRepository.createNewPost(newPost)
+      await this.postRepository.createNewPost(newPost);
 
       return res
         .status(201)
@@ -44,50 +45,50 @@ export default class PostController {
     }
   }
 
-  // // 5. Get all posts (Pagination)
-  // async getAll(req, res, next) {
-  //   try {
-  //     const caption = req.query.caption || "";
-  //     const page = parseInt(req.query.page) || 1;
-  //     const limit = parseInt(req.query.limit) || 10;
+  // 5. Get all posts (Pagination)
+  async getAll(req, res, next) {
+    try {
+      const caption = req.query.caption || "";
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
 
-  //     const result = await PostModel.findAll(page, limit, caption);
+      const result = await this.postRepository.findAll(page, limit, caption);
 
-  //     // Application error handling moved here
-  //     if (!result.posts || result.posts.length === 0) {
-  //       throw new ApplicationError("Posts Not Found", 404);
-  //     }
+      // Application error handling moved here
+      if (!result.posts || result.posts.length === 0) {
+        throw new ApplicationError("Posts Not Found", 404);
+      }
 
-  //     res.status(200).json({
-  //       success: true,
-  //       message: "All posts",
-  //       data: result.posts,
-  //       pagination: {
-  //         totalPosts: result.totalPosts,
-  //         totalPages: result.totalPages,
-  //         currentPage: result.currentPage,
-  //       },
-  //     });
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // }
+      res.status(200).json({
+        success: true,
+        message: "All posts",
+        data: result.posts,
+        pagination: {
+          totalPosts: result.totalPosts,
+          totalPages: result.totalPages,
+          currentPage: result.currentPage,
+        },
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
 
-  // async getPostById(req, res, next) {
-  //   try {
-  //     const id = parseInt(req.params.id);
-  //     if (!id) throw new ApplicationError("Invalid post ID", 400);
+  async getPostById(req, res, next) {
+    try {
+      const postID = req.params.id;
+      if (!postID) throw new ApplicationError("Invalid post ID", 400);
 
-  //     const post = await PostModel.getPostById(id);
-  //     if (!post) throw new ApplicationError("Post not found", 404);
+      const post = await this.postRepository.getPostById(postID);
+      if (!post) throw new ApplicationError("Post not found", 404);
 
-  //     return res
-  //       .status(200)
-  //       .json({ success: true, message: "Post retrieved", post });
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // }
+      return res
+        .status(200)
+        .json({ success: true, message: "Post retrieved", post });
+    } catch (err) {
+      next(err);
+    }
+  }
 
   // async getPostByUserCredentials(req, res, next) {
   //   try {
