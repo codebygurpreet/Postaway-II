@@ -20,9 +20,9 @@ router.get("/all", (req, res, next) =>
 );
 
 // Get posts by logged-in user
-// router.get("/", jwtAuth, (req, res, next) =>
-//   postController.getPostByUserCredentials(req, res, next)
-// );
+router.get("/", jwtAuth, (req, res, next) =>
+  postController.getPostByUserCredentials(req, res, next)
+);
 
 // // 1. Additional Task Filter By Caption
 // router.get("/filter", (req, res, next) =>

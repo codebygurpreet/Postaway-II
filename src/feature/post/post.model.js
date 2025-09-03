@@ -1,6 +1,6 @@
 export default class PostModel {
-  constructor(userId, caption, imageUrl, status, createdAt = new Date()) {
-    this.userId = userId;
+  constructor(userID, caption, imageUrl, status, createdAt = new Date()) {
+    this.userID = userID;
     this.caption = caption;
     this.imageUrl = imageUrl;
     this.status = status;

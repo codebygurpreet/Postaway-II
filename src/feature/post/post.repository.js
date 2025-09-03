@@ -87,4 +87,25 @@ export default class PostRepository {
         }
     }
 
+    async getPostByUserCredentials(userID) {
+        try {
+            // 1. getting db
+            const db = getDB();
+            // 2. getting collection
+            const collection = db.collection(this.collection);
+            // Aggregation pipeline
+            const pipeline = [
+                {
+                    $match: {
+                        userID: userID,
+                        status: { $nin: ["draft", "archived"] }
+                    }
+                },
+            ];
+            return await collection.aggregate(pipeline).toArray();
+        }catch (err) {
+            throw new ApplicationError("Error fetching post: " + err.message, 500);
+        }
+    }
+
 }

@@ -10,7 +10,7 @@ export default class PostController {
 
   async createNewPost(req, res, next) {
     try {
-      const userId = req.userID;
+      const userID = req.userID;
       const { caption, status } = req.body;
 
       if (!req.file) {
@@ -29,7 +29,7 @@ export default class PostController {
 
       const imageUrl = req.file.filename;
       const newPost = new PostModel(
-        userId,
+        userID,
         caption.trim(),
         imageUrl,
         postStatus
@@ -90,21 +90,22 @@ export default class PostController {
     }
   }
 
-  // async getPostByUserCredentials(req, res, next) {
-  //   try {
-  //     const userId = req.userID;
-  //     if (!userId) throw new ApplicationError("User ID required", 400);
+  async getPostByUserCredentials(req, res, next) {
+    try {
+      const userID = req.userID;
+      if (!userID) throw new ApplicationError("User ID required", 400);
 
-  //     const posts = await PostModel.getPostByUserCredentials(userId);
-  //     if (!posts) throw new ApplicationError("No Post Found", 404)
+      const posts = await this.postRepository.getPostByUserCredentials(userID);
+      if (!posts) throw new ApplicationError("No Post Found", 404)
+        console.log(posts)
 
-  //     return res
-  //       .status(200)
-  //       .json({ success: true, message: `Posts by user ${userId}`, posts });
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // }
+      return res
+        .status(200)
+        .json({ success: true, message: `Posts by user ${userID}`, posts });
+    } catch (err) {
+      next(err);
+    }
+  }
 
   // async updatePostById(req, res, next) {
   //   try {
