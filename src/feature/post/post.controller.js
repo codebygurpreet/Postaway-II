@@ -129,24 +129,27 @@ export default class PostController {
   //   }
   // }
 
-  // async deletePostById(req, res, next) {
-  //   try {
-  //     const userId = req.userID;
-  //     const postId = parseInt(req.params.id);
-  //     if (!postId) throw new ApplicationError("Post ID is required", 400);
+  
+  // async delete post by id
+  async deletePostById(req, res, next) {
+    try {
+      const userID = req.userID;
+      const postID = req.params.id;
+      if (!postID || !userID) throw new ApplicationError("Post ID And User ID both required", 400);
 
-  //     const deletePost = await PostModel.deletePostById(postId, userId);
-  //     if (!deletePost) throw new ApplicationError("Post not found", 404);
+      const deletePost = await this.postRepository.deletePostById(postID, userID);
+      if (!deletePost) throw new ApplicationError("Post not found", 404);
+      console.log(deletePost);
 
-  //     res.status(201).json({
-  //       success: true,
-  //       message: "Post deleted successfully",
-  //       deletePost,
-  //     });
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // }
+      res.status(201).json({
+        success: true,
+        message: "Post deleted successfully",
+        deletePost,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
 
   // // Additional Task
   // // 1. Filter by caption

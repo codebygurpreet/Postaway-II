@@ -50,8 +50,8 @@ router.get("/:id", (req, res, next) =>
 // );
 
 // // Delete post by ID
-// router.delete("/:id", jwtAuth, (req, res, next) =>
-//   postController.deletePostById(req, res, next)
-// );
+router.delete("/:id", jwtAuth, (req, res, next) =>
+  postController.deletePostById(req, res, next)
+);
 
 export default router;

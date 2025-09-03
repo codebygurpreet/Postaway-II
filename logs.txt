@@ -567,3 +567,15 @@
 [2025-09-03T16:34:46.688Z] info: POST /api/posts/ Request Body Is Empty
 [2025-09-03T16:34:54.863Z] info: POST /api/posts/ Request Body Is Empty
 [2025-09-03T16:35:11.065Z] info: GET /api/posts Request Body Is Empty
+[2025-09-03T17:08:22.287Z] info: DELETE /api/posts/68b86e2692a82628aec7ae53 Request Body Is Empty
+[2025-09-03T17:10:39.669Z] info: DELETE /api/posts/68b86e2692a82628aec7ae53 Request Body Is Empty
+[2025-09-03T17:12:03.400Z] info: DELETE /api/posts/68b86e2692a82628aec7ae53 Request Body Is Empty
+[2025-09-03T17:12:29.584Z] info: DELETE /api/posts/68b86e2692a82628aec7ae53 Request Body Is Empty
+[2025-09-03T17:14:08.770Z] info: DELETE /api/posts/68b86e2692a82628aec7ae53 Request Body Is Empty
+[2025-09-03T17:31:12.057Z] info: DELETE /api/posts/68b86e2692a82628aec7ae53 Request Body Is Empty
+[2025-09-03T17:31:13.637Z] info: DELETE /api/posts/68b86e2692a82628aec7ae53 Request Body Is Empty
+[2025-09-03T17:31:50.406Z] info: DELETE /api/posts/68b86e2692a82628aec7ae53 Request Body Is Empty
+[2025-09-03T17:33:18.998Z] info: DELETE /api/posts/68b86e2692a82628aec7ae53 Request Body Is Empty
+[2025-09-03T17:34:51.326Z] info: DELETE /api/posts/68b86e2e92a82628aec7ae54 Request Body Is Empty
+[2025-09-03T17:35:00.203Z] info: DELETE /api/posts/68b86e2e92a82628aec7ae54 Request Body Is Empty
+[2025-09-03T17:35:28.429Z] info: DELETE /api/posts/68b86e2692a82628aec7ae53 Request Body Is Empty
