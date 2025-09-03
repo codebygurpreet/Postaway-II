@@ -125,7 +125,30 @@ export default class PostRepository {
             if (result.deletedCount === 0) {
                 throw new ApplicationError("No matching post found to delete", 404);
             }
-            
+
+            return result;
+        } catch (err) {
+            throw new ApplicationError("Error fetching post: " + err.message, 500);
+        }
+    }
+
+    async updatePostById(postID, userID, data) {
+        try {
+            // 1. getting db
+            const db = getDB();
+            // 2. getting collection
+            const collection = db.collection(this.collection);
+            // 3. update post
+            const result = collection.findOneAndUpdate(
+                {
+                    _id: new ObjectId(postID),
+                    userID: userID
+                }, // filter
+                {$set: data}, // updating field
+                {  
+                    returnDocument: "after"
+                } // return the updated document instead of the old one and project data;
+            ) 
             return result;
         } catch (err) {
             throw new ApplicationError("Error fetching post: " + err.message, 500);

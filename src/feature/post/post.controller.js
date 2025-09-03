@@ -97,7 +97,7 @@ export default class PostController {
 
       const posts = await this.postRepository.getPostByUserCredentials(userID);
       if (!posts) throw new ApplicationError("No Post Found", 404)
-        console.log(posts)
+      console.log(posts)
 
       return res
         .status(200)
@@ -107,29 +107,32 @@ export default class PostController {
     }
   }
 
-  // async updatePostById(req, res, next) {
-  //   try {
-  //     const userId = req.userID;
-  //     const postId = parseInt(req.params.id);
-  //     const data = req.body;
+  async updatePostById(req, res, next) {
+    try {
+      const userID = req.userID;
+      const postID = req.params.id;
+      const data = req.body;
 
-  //     if (!postId || !userId) throw new ApplicationError("Missing post ID or user ID", 400);
+      if (!postID || !userID) throw new ApplicationError("Missing post ID or user ID", 400);
 
-  //     const updatedPost = await PostModel.updatePostById(postId, userId, data);
-  //     if (!updatedPost)
-  //       throw new ApplicationError("Post not found or update failed", 404);
+      // prevent userID update
+      if (data.userID) throw new ApplicationError("You cant perform this action", 400);
 
-  //     res.status(200).json({
-  //       success: true,
-  //       message: "Post updated successfully",
-  //       updatedPost,
-  //     });
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // }
+      const updatedPost = await this.postRepository.updatePostById(postID, userID, data);
+      
+      if (!updatedPost) throw new ApplicationError("Post not found or update failed", 404);
 
-  
+      res.status(200).json({
+        success: true,
+        message: "Post updated successfully",
+        updatedPost,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+
+
   // async delete post by id
   async deletePostById(req, res, next) {
     try {

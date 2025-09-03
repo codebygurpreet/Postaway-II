@@ -39,10 +39,10 @@ router.get("/:id", (req, res, next) =>
   postController.getPostById(req, res, next)
 );
 
-// // Update post by ID
-// router.put("/:id", upload.none(), jwtAuth, (req, res, next) =>
-//   postController.updatePostById(req, res, next)
-// );
+// Update post by ID
+router.put("/:id", upload.none(), jwtAuth, (req, res, next) =>
+  postController.updatePostById(req, res, next)
+);
 
 // // 2. Additional Task post.routes.js
 // router.patch("/:id/status", upload.none(), jwtAuth, (req, res, next) =>
