@@ -11,15 +11,15 @@ const commentController = new CommentController();
 // Routes
 
 // GET /:id - Retrieve all comments for a specific post
-router.get("/:id", jwtAuth, commentController.getAllComment)
+// router.get("/:id", jwtAuth, commentController.getAllComment)
 
 // POST /:id - Add a new comment to a specific post
-router.post('/:id', jwtAuth, commentController.createComment)
+router.post('/:id', jwtAuth, (req,res,next)=> commentController.createComment(req,res,next));
 
-// DELETE /:id - Delete a specific comment by ID
-router.delete('/:id', jwtAuth, commentController.deleteComment)
+// // DELETE /:id - Delete a specific comment by ID
+// router.delete('/:id', jwtAuth, commentController.deleteComment)
 
-// PUT /:id - Update a specific comment by ID
-router.put('/:id', jwtAuth, commentController.updateComment)
+// // PUT /:id - Update a specific comment by ID
+// router.put('/:id', jwtAuth, commentController.updateComment)
 
 export default router;

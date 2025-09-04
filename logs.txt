@@ -597,3 +597,22 @@
 [2025-09-03T20:01:29.178Z] info: PUT /api/posts/68b86e2692a82628ae {"caption":"Worship"}
 [2025-09-03T20:02:05.225Z] info: PUT /api/posts/68b86e2692a82628aec7ae59 {"caption":"Worship"}
 [2025-09-03T20:03:36.258Z] info: PUT /api/posts/68b86e2692a82628aec7ae5 {"caption":"Worship"}
+[2025-09-04T16:59:48.621Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-04T16:59:53.788Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-04T17:00:27.785Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-04T17:01:50.708Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-04T17:02:28.334Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-04T17:04:39.218Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"I Love the animne"}
+[2025-09-04T17:05:54.942Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"I Love the animne"}
+[2025-09-04T17:06:25.164Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"I Love the animne"}
+[2025-09-04T17:08:22.553Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"I Love the animne"}
+[2025-09-04T17:09:12.260Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"I Love the animne"}
+[2025-09-04T17:09:36.230Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"I Love the animne"}
+[2025-09-04T17:10:58.354Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"I Love the animne"}
+[2025-09-04T17:13:47.210Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"I Love the animne"}
+[2025-09-04T17:15:34.976Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"Sexy animne"}
+[2025-09-04T17:15:55.628Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"Sexy animne"}
+[2025-09-04T17:16:29.009Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"Sexy animne"}
+[2025-09-04T17:17:15.336Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"Sexy animne"}
+[2025-09-04T17:17:41.775Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"Sexy animne"}
+[2025-09-04T17:24:16.253Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"Sexy animne"}
