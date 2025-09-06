@@ -123,32 +123,35 @@ export default class CommentController {
     }
 
 
-    // updateComment(req, res) {
-    //     try {
-    //         const userId = req.userID;
-    //         const commentId = parseInt(req.params.id);
-    //         const { content } = req.body;
+    async updateComment(req, res, next) {
+        try {
+            const commentID = req.params.commentId;
+            const { content } = req.body;
+            const userID = req.userID;
 
-    //         const updatedComment = CommentModel.updateComment(commentId, userId, content);
+            if (!commentID) {
+                throw new ApplicationError("Missing comment ID", 400);
+            }
 
-    //         if (!updatedComment) {
-    //             throw new ApplicationError("Comment not found or you are not the owner", 404);
-    //         }
+            if (!content || content.trim() === "") {
+                throw new ApplicationError("Comment content cannot be empty", 400);
+            }
 
-    //         return res.status(200).json({
-    //             success: true,
-    //             message: "Comment updated successfully",
-    //             updatedComment
-    //         });
+            const updatedComment = await this.commentRepository.updateComment(
+                commentID,
+                userID,
+                content,
+            );
 
-    //     } catch (err) {
-    //         console.error("Error in updating comment:", err.message);
-    //         return res.status(500).json({
-    //             success: false,
-    //             message: err.message || "Something went wrong while updating the comment"
-    //         });
-    //     }
-    // }
+            res.status(200).json({
+                success: true,
+                message: `You comment with id ${commentID} has been updated,
+                data: updatedComment`,
+            });
+        } catch (err) {
+            next(err); // calling next with error, error will be caught by errorhandler Middleware
+        }
+    }
 
 
 

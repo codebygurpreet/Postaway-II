@@ -7,13 +7,13 @@ export default class CommentRepository {
 
     constructor() {
         // MongoDB collection name
-        this.commentRepository = "comments";
+        this.collection = "comments";
     }
 
     async createComment(userID, postID, content) {
         try {
             const db = getDB();
-            const collection = db.collection(this.commentRepository);
+            const collection = db.collection(this.collection);
 
             // create comment object
             const newComment = new CommentModel(userID, postID, content);
@@ -35,7 +35,7 @@ export default class CommentRepository {
     async getAllComment(postID, page, limit) {
         try {
             const db = getDB();
-            const collection = db.collection(this.commentRepository);
+            const collection = db.collection(this.collection);
 
             const skip = (page - 1) * limit;
             // Fetch comments with pagination
@@ -67,7 +67,7 @@ export default class CommentRepository {
     async deleteComment(commentID, userID) {
         try {
             const db = getDB();
-            const collection = db.collection(this.commentRepository);
+            const collection = db.collection(this.collection);
 
             const result = await collection.deleteOne({ _id: new ObjectId(commentID), userID: userID });
 
@@ -76,6 +76,33 @@ export default class CommentRepository {
         } catch (err) {
             console.error("Error in deleteComment (Repository):", err.message);
             throw err; // Rethrow for controller to catch
+        }
+    }
+
+    async updateComment(commentID, userID, content) {
+        try {
+            const db = getDB();
+            const collection = db.collection(this.collection);
+
+            const updatedComment = await collection.updateOne(
+                {
+                    _id: new ObjectId(commentID),
+                    userID: userID,
+                },
+                { $set: { content } }
+            );
+
+            if (!updatedComment || updatedComment.deletedCount <= 0) {
+                throw new ApplicationError(
+                    "Something went wrong updating comment",
+                    500
+                );
+            }
+        } catch (err) {
+            throw new ApplicationError(
+                "Error updating comment: " + err.message,
+                500
+            );
         }
     }
 }

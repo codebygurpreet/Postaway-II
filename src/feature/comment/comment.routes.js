@@ -20,6 +20,6 @@ router.post('/:id', jwtAuth, (req,res,next)=> commentController.createComment(re
 router.delete('/:id', jwtAuth, (req,res,next)=>commentController.deleteComment(req,res,next))
 
 // // PUT /:id - Update a specific comment by ID
-// router.put('/:id', jwtAuth, commentController.updateComment)
+router.put('/:commentId', jwtAuth, (req,res,next)=>commentController.updateComment(req,res,next))
 
 export default router;
