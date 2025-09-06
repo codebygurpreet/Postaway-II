@@ -616,3 +616,20 @@
 [2025-09-04T17:17:15.336Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"Sexy animne"}
 [2025-09-04T17:17:41.775Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"Sexy animne"}
 [2025-09-04T17:24:16.253Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"Sexy animne"}
+[2025-09-05T17:05:45.218Z] info: GET /api/comments/2?page=1&limit=5 Request Body Is Empty
+[2025-09-05T17:06:18.265Z] info: GET /api/comments/68b9c589ff3a5a9457416e9b?page=1&limit=5 Request Body Is Empty
+[2025-09-05T17:10:14.359Z] info: GET /api/comments/68b9c589ff3a5a9457416e9b?page=1&limit=5 Request Body Is Empty
+[2025-09-05T17:11:26.128Z] info: GET /api/comments/68b9c589ff3a5a9457416e9b?page=1&limit=5 Request Body Is Empty
+[2025-09-05T17:11:38.974Z] info: GET /api/comments/68b9c589ff3a5a9457416e9b?page=1&limit=5 Request Body Is Empty
+[2025-09-05T17:38:16.472Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"this is the best anime i have seen"}
+[2025-09-05T17:38:28.614Z] info: POST /api/comments/68b9c589ff3a5a9457416e9b {"content":"Moves is so nice"}
+[2025-09-05T17:38:34.412Z] info: GET /api/comments/68b9c589ff3a5a9457416e9b?page=1&limit=5 Request Body Is Empty
+[2025-09-05T17:40:27.270Z] info: DELETE /api/comments/68bb2014aed6ad2d1e35b642 Request Body Is Empty
+[2025-09-05T17:40:54.105Z] info: DELETE /api/comments/68bb2014aed6ad2d1e35b642 Request Body Is Empty
+[2025-09-05T17:42:30.678Z] info: DELETE /api/comments/68bb2014aed6ad2d1e35b642 Request Body Is Empty
+[2025-09-05T17:43:01.221Z] info: DELETE /api/comments/68bb2008aed6ad2d1e35b641 Request Body Is Empty
+[2025-09-05T17:43:16.706Z] info: DELETE /api/comments/68bb2008aed6ad2d1e35b641 Request Body Is Empty
+[2025-09-05T17:43:31.619Z] info: DELETE /api/comments/68b9c9b57841ea843c41653b Request Body Is Empty
+[2025-09-05T17:43:42.003Z] info: DELETE /api/comments/68b9c9b57841ea843c41653b Request Body Is Empty
+[2025-09-05T17:44:13.631Z] info: DELETE /api/comments/68b9c8cb878e1903897c0e7b Request Body Is Empty
+[2025-09-05T17:44:17.627Z] info: DELETE /api/comments/68b9c8cb878e1903897c0e7b Request Body Is Empty
