@@ -10,7 +10,7 @@ export default class LikeController {
         this.postRepository = new PostRepository();
     }
 
-    async addLike(req, res, next) {
+    async toggleLike(req, res, next) {
         try {
             const userID = req.userID;
             const postID = req.params.id;

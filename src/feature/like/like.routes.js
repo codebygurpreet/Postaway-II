@@ -10,7 +10,7 @@ const likeController = new LikeController()
 
 // Routes
 // Add Like
-router.post('/toggle/:id', jwtAuth, (req, res, next) =>  likeController.addLike(req, res, next));
+router.post('/toggle/:id', jwtAuth, (req, res, next) =>  likeController.toggleLike(req, res, next));
 
 // Retrieve all likes for a specific post
 router.get('/:id', (req, res, next) => likeController.getAllLikesForPost(req, res, next));
