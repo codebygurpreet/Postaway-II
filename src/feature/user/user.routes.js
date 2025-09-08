@@ -10,13 +10,13 @@ const userController = new UserController();
 
 
 // Routes
-// get user
-router.get('/get-details/:userId', jwtAuth, (req, res, next)=> userController.getUser(req, res, next));
+// get - user details
+router.get('/get-details/:userId', jwtAuth, (req, res, next) => userController.getUser(req, res, next));
 
-// get All user
-router.get('/get-all-details', jwtAuth, (req, res, next)=> userController.getAllUser(req, res, next));
+// get - all user details
+router.get('/get-all-details', jwtAuth, (req, res, next) => userController.getAllUsers(req, res, next));
 
-// get Update user details
-router.post('/update-details/:userId', jwtAuth, (req, res, next)=> userController.updateById(req, res, next));
+// post - update user details
+router.post('/update-details/:userId', jwtAuth, (req, res, next) => userController.updateById(req, res, next));
 
 export default router

@@ -1,59 +1,66 @@
+// Import required packages
 import UserRepository from "./user.repository.js";
 import ApplicationError from "../../../utils/applicationError.js";
 
 export default class UserController {
-
-    // constructor
     constructor() {
         this.userRepository = new UserRepository();
     }
 
-    // 1. async get-details (no passwords)
+    // 1. get - user-details (no passwords)
     async getUser(req, res, next) {
         try {
-            const userID = req.params.userId;
-            if (!userID) {
-                throw new ApplicationError("User ID is missing", 400);
+            const userId = req.params.userId;
+            if (!userId) {
+                throw new ApplicationError("User ID required", 400);
             }
-            const user = await this.userRepository.getUser(userID);
+
+            const user = await this.userRepository.getUserById(userId);
+            if (!user) {
+                throw new ApplicationError("User not found", 404);
+            }
 
             return res.status(200).json({
                 message: "user details retrieved succesfully",
-                user
+                user,
             });
         } catch (err) {
             next(err);
         }
     }
 
-    // 2. async get-all-details (no passwords)
-    async getAllUser(req, res, next) {
+    // 2. get - all-user-details (no passwords)
+    async getAllUsers(req, res, next) {
         try {
-            const allUser = await this.userRepository.getAllUser();
+            const users = await this.userRepository.getAllUsers();
+
+            if (!users || users.length === 0) {
+                throw new ApplicationError("No users found.", 404);
+            }
 
             return res.status(200).json({
                 message: "All user details retrieved succesfully",
-                users: allUser
+                users
             });
         } catch (err) {
             next(err);
         }
     }
 
-    // 3. async update-details (no passwords)
+    // 3. post - update-user-details (no passwords)
     async updateById(req, res, next) {
         try {
-            const userID = req.params.userId;
+            const userId = req.params.userId;
             const { name, gender } = req.body;
-
-            if (!userID) {
-                throw new ApplicationError("User ID is missing", 400);
+            if (!userId) {
+                throw new ApplicationError("User ID required", 400);
             }
 
             const updateData = {};
+
             // Validate and add name if provided
             if (name !== undefined) {
-                if (!name || typeof name !== "string" || !name.trim()) {
+                if (typeof name !== "string" || !name.trim()) {
                     throw new ApplicationError("Valid name is required", 400);
                 }
                 updateData.name = name.trim();
@@ -80,7 +87,7 @@ export default class UserController {
             }
 
 
-            const updatedUser = await this.userRepository.updateById(userID,updateData);
+            const updatedUser = await this.userRepository.updateById(userId, updateData);
 
             if (!updatedUser) {
                 throw new ApplicationError("User not found or not updated", 404);

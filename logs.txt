@@ -689,3 +689,22 @@
 [2025-09-08T17:06:37.014Z] info: GET /api/likes/68b9c589ff3a5a9457416e9b Request Body Is Empty
 [2025-09-08T17:09:52.301Z] info: POST /api/likes/toggle/68b9c589ff3a5a9457416e9b Request Body Is Empty
 [2025-09-08T17:10:01.187Z] info: POST /api/likes/toggle/68b9c589ff3a5a9457416e9b Request Body Is Empty
+[2025-09-08T17:38:41.019Z] info: GET /api/users/get-details/68b9c430ff3a5a9457416e99 Request Body Is Empty
+[2025-09-08T17:39:15.651Z] info: GET /api/users/get-details/68b9c430ff3a5a9457416e99 Request Body Is Empty
+[2025-09-08T17:39:27.517Z] info: GET /api/users/get-details/68b9c430ff3a5a9457416e99 Request Body Is Empty
+[2025-09-08T17:39:41.906Z] info: GET /api/users/get-details/68b9c430ff3a5a9457416e99 Request Body Is Empty
+[2025-09-08T17:40:15.385Z] info: GET /api/users/get-details/68b9c430ff3a5a9457416e99 Request Body Is Empty
+[2025-09-08T17:40:44.258Z] info: GET /api/users/get-details/68b9c430ff3a5a9457416e99 Request Body Is Empty
+[2025-09-08T17:58:04.233Z] info: GET /api/users/get-details/68b9c430ff3a5a9457416e99 Request Body Is Empty
+[2025-09-08T17:58:42.116Z] info: GET /api/users/get-details/68b9c430ff3a5a9457416e99 Request Body Is Empty
+[2025-09-08T17:58:53.920Z] info: GET /api/users/get-details/68b9c430ff3a5a9457416e99 Request Body Is Empty
+[2025-09-08T18:00:08.134Z] info: GET /api/users/get-details/68b9c430ff3a5a9457416e99 Request Body Is Empty
+[2025-09-08T18:03:04.195Z] info: GET /api/users/get-details/68bf1a36f234999d222acfa4 Request Body Is Empty
+[2025-09-08T18:03:58.312Z] info: GET /api/users/get-details/68bf1a36f234999d222acfa4 Request Body Is Empty
+[2025-09-08T18:04:33.473Z] info: GET /api/users/get-details/68bf1a36f234999d222acfa4 Request Body Is Empty
+[2025-09-08T18:07:18.975Z] info: GET /api/users/get-details/68bf1a36f234999d222acfa4 Request Body Is Empty
+[2025-09-08T18:10:14.464Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-09-08T18:10:41.929Z] info: POST /api/users/update-details/68bf1a36f234999d222acfa4 {"gender":"female"}
+[2025-09-08T18:10:56.682Z] info: POST /api/users/update-details/68bf1a36f234999d222acfa4 {"gender":"female"}
+[2025-09-08T18:12:58.526Z] info: POST /api/users/update-details/68bf1a36f234999d222acfa4 {"gender":"female"}
+[2025-09-08T18:13:19.801Z] info: POST /api/users/update-details/68bf1a36f234999d222acfa4 {"gender":"female"}
