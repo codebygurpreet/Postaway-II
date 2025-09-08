@@ -13,7 +13,7 @@ const likeController = new LikeController()
 router.post('/toggle/:id', jwtAuth, (req, res, next) =>  likeController.addLike(req, res, next));
 
 // Retrieve all likes for a specific post
-// router.get('/:postid', likeController.getAllLikesForPost)
+router.get('/:id', (req, res, next) => likeController.getAllLikesForPost(req, res, next));
 
 // delete all likes for a specific post
 // router.delete('/toggle/:postid', jwtAuth, likeController.deleteLike)

@@ -14,7 +14,7 @@ export default class LikeRepository {
             const collection = db.collection(this.collection);
 
             const like = await collection.findOne({ userID: new ObjectId(userID), postID: new ObjectId(postID) });
-            
+
             return like;
 
         } catch (err) {
@@ -53,4 +53,18 @@ export default class LikeRepository {
 
     }
 
+    async getAllLikesForPost(postID) {
+        try {
+            const db = getDB();
+            const collection = db.collection(this.collection);
+
+            const allLikes = await collection.find({
+                postID: new ObjectId(postID)
+            }).toArray();
+            return allLikes;
+        } catch (err) {
+            throw err;
+        }
+
+    }
 }
