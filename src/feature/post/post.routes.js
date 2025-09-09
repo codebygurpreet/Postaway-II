@@ -44,14 +44,14 @@ router.put("/:id", upload.none(), jwtAuth, (req, res, next) =>
   postController.updatePostById(req, res, next)
 );
 
-// // 2. Additional Task post.routes.js
-// router.patch("/:id/status", upload.none(), jwtAuth, (req, res, next) =>
-//   postController.postStatus(req, res, next)
-// );
 
 // // Delete post by ID
 router.delete("/:id", jwtAuth, (req, res, next) =>
   postController.deletePostById(req, res, next)
 );
 
+// // 2. Additional Task post.routes.js
+// router.patch("/:id/status", upload.none(), jwtAuth, (req, res, next) =>
+//   postController.postStatus(req, res, next)
+// );
 export default router;
