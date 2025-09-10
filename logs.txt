@@ -708,3 +708,15 @@
 [2025-09-08T18:10:56.682Z] info: POST /api/users/update-details/68bf1a36f234999d222acfa4 {"gender":"female"}
 [2025-09-08T18:12:58.526Z] info: POST /api/users/update-details/68bf1a36f234999d222acfa4 {"gender":"female"}
 [2025-09-08T18:13:19.801Z] info: POST /api/users/update-details/68bf1a36f234999d222acfa4 {"gender":"female"}
+[2025-09-10T19:03:26.908Z] info: POST /api/friends/toggle-friendship/:68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-10T19:04:09.386Z] info: POST /api/friends/toggle-friendship/:68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-10T19:05:49.302Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-10T19:07:05.270Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-10T19:07:14.498Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-10T19:10:32.016Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-10T19:14:04.567Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-10T19:14:16.378Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-10T19:14:55.593Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-10T19:15:36.445Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-10T19:15:41.735Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-10T19:15:46.635Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
