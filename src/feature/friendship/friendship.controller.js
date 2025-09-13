@@ -16,6 +16,15 @@ export default class FriendshipController {
     getFriends = async (req, res, next) => {
         try {
             // logic to get friends
+            const userId = new ObjectId(req.params.userId);
+            const friends = await this.friendshipRepository.getFriends(userId);
+
+            res.status(200).json({
+                success: true,
+                message: friends.length === 0 ? "No friends found" : "Friends retrieved successfully",
+                data: friends,
+            });
+
         } catch (err) {
             next(err);
         }
@@ -30,7 +39,7 @@ export default class FriendshipController {
 
             res.status(200).json({
                 success: true,
-                message: requests.length === 0 ? "No pending friend requests" :  "Pending friend requests retrieved successfully",
+                message: requests.length === 0 ? "No pending friend requests" : "Pending friend requests retrieved successfully",
                 data: requests,
             });
 
@@ -74,11 +83,11 @@ export default class FriendshipController {
             const userId = new ObjectId(req.userID);
             const friendId = new ObjectId(req.params.friendId);
             const action = req.body.action; // 'accept' or 'reject'
-            
+
             if (!['accept', 'reject'].includes(action)) {
                 throw new ApplicationError('Invalid action. use "accept" or "reject".', 400);
             }
-            
+
             const friend = await this.userRepository.getUserById(friendId);
             if (!friend) {
                 throw new ApplicationError('Friend user not found', 404);

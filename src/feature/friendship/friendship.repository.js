@@ -18,9 +18,21 @@ export default class FriendshipRepository {
         return db.collection(this.collection);
     }
 
-    getFriends = async () => {
+    getFriends = async (userId) => {
         try {
             // write you code down here
+            const collection = await this.getCollection();
+
+            const requests = await collection.find({
+                status: { $in: ['accepted'] },
+                $or: [
+                    { userId: userId },
+                    { friendId: userId }
+                ]
+            }).toArray();
+            console.log(requests);
+
+            return requests
         } catch (err) {
             throw err;
         }
