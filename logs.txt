@@ -811,3 +811,26 @@
 [2025-09-11T19:30:42.577Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
 [2025-09-11T19:30:48.787Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
 [2025-09-11T19:31:08.568Z] info: POST /api/friends/response-to-request/68b9c45dff3a5a9457416e9a {"action":"reject"}
+[2025-09-13T16:18:55.375Z] info: POST /api/user/login {"email":"gurri304@gmail.com","password":"@password"}
+[2025-09-13T16:20:55.732Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-13T16:21:58.778Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-13T16:22:02.652Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-13T16:22:15.289Z] info: POST /api/friends/response-to-request/68b9c45dff3a5a9457416e9a {"action":"accept"}
+[2025-09-13T16:22:24.547Z] info: POST /api/friends/response-to-request/68b9c45dff3a5a9457416e9a {"action":"accept"}
+[2025-09-13T16:22:33.798Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-13T16:22:43.732Z] info: POST /api/friends/response-to-request/68b9c45dff3a5a9457416e9a {"action":"reject"}
+[2025-09-13T17:03:55.767Z] info: POST /api/friends/toggle-friendship/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-09-13T17:06:09.238Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T17:08:26.381Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T17:09:21.591Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T17:11:53.267Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T17:13:01.798Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T17:16:21.067Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T17:16:51.744Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T17:27:52.711Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T17:28:14.199Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T18:07:31.689Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T18:07:41.589Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T18:08:58.431Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T18:08:59.913Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-09-13T18:09:21.440Z] info: GET /api/friends/get-pending-requests Request Body Is Empty

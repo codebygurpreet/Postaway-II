@@ -26,9 +26,18 @@ export default class FriendshipRepository {
         }
     };
 
-    getPendingRequests = async () => {
+    getPendingRequests = async (userId) => {
         try {
             // write you code down here
+            const collection = await this.getCollection();
+
+            const requests = await collection.find({
+                friendId: userId,
+                status: { $in: ['pending'] },
+            }).toArray();
+
+            return requests
+
         } catch (err) {
             throw err;
         }
@@ -169,7 +178,7 @@ export default class FriendshipRepository {
                 message: "No action taken",
                 data: existingFriendship,
             };
-            
+
         } catch (err) {
             throw err;
         }
