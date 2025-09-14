@@ -1,32 +1,70 @@
-// Import required packages
+// Auth routes 
+
+// Import required packages :-
+// Third-party packages
 import express from "express";
+
+// Application modules 
 import AuthController from "./auth.controller.js";
 import validateUser from "../../middleware/validator.middleware.js";
 import jwtAuth from "../../middleware/jwt.middleware.js";
 
-// Initialize controller and router
+
+// Initialize router and controller
 const router = express.Router();
 const authController = new AuthController();
 
-// Routes
-// User registration
-router.post("/signup", validateUser, (req, res, next) => authController.signUp(req, res, next));
 
-// User login
-router.post("/signin", (req, res, next) => authController.signIn(req, res, next));
+// Routes :-
+// User registration or signup
+// Purpose: Register a new user
+// Middleware: validateUser → ensures body has required fields
+router.post("/signup",
+    validateUser,
+    authController.signUp
+);
+
+// User login or signin
+// Purpose: Authenticate user and provide a token
+router.post("/signin",
+    authController.signIn
+);
+
+// user router for logout from current device
+// Purpose: Logout user from current device
+// Middleware: jwtAuth → ensures user is authenticated
+router.post("/logout",
+    jwtAuth,
+    authController.Logout
+);
+
+// user router for logout from all devices
+// Purpose: Logout user from all devices
+// Middleware: jwtAuth → ensures user is authenticated
+router.post("/logout-all-devices",
+    jwtAuth,
+    authController.LogoutAll
+);
 
 
-// User for forgot password
-router.post("/forget-password", (req, res, next) => authController.forgotPassword(req, res, next));
+// Send OTP to user
+// Purpose: Send OTP to user's email for password reset
+router.post("/otp/send",
+    authController.sendOtp
+);
 
-// User for reset password
-router.post("/reset-password/:token", (req, res, next) => authController.ResetPasswordWithToken(req, res, next));
+// Verify OTP
+// Purpose: Verify the OTP sent to user's
+router.post("/otp/verify",
+    authController.verifyOtp
+);
 
-// user router for logout 
-router.post("/logout", jwtAuth, (req, res, next) => authController.Logout(req, res, next));
+// Reset password using OTP
+// Purpose: Reset user's password using the verified OTP
+router.post("/otp/reset-password",
+    authController.resetPasswordWithOtp
+);
 
-// user router for logout 
-router.post("/logout-all-devices", jwtAuth, (req, res, next) => authController.LogoutAll(req, res, next));
 
-
+// Export router
 export default router;
