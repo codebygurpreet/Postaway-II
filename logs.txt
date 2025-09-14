@@ -886,3 +886,12 @@
 [2025-09-14T21:02:16.618Z] info: POST /api/users/otp/reset-password {"email":"gurri304@gmail.com","newPassword":"@Newpassword1"}
 [2025-09-14T21:03:13.079Z] info: POST /api/users/otp/reset-password {"email":"gurri304@gmail.com","newPassword":"@Password1"}
 [2025-09-14T21:03:37.793Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-14T21:56:53.766Z] info: POST /api/users/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGI5YzQzMGZmM2E1YTk0NTc0MTZlOTkiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1Nzg4Njk4OCwiZXhwIjoxNzU4NDkxNzg4fQ._7LODLHAdMEShDLgPwyJiJKS9X1O2SBtN0k_UwQpqa0"}
+[2025-09-14T21:57:08.908Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-14T21:57:30.204Z] info: POST /api/users/otp/send {"email":"gurri304@gmail.com"}
+[2025-09-14T21:57:57.432Z] info: POST /api/users/otp/send {"email":"ujjwalshakeya1@gmail.com"}
+[2025-09-14T21:58:51.854Z] info: POST /api/users/otp/verify {"email":"gurri304@gmail.com","otp":"417682"}
+[2025-09-14T21:58:58.211Z] info: POST /api/users/otp/verify {"email":"gurri304@gmail.com","otp":"417682"}
+[2025-09-14T21:59:14.561Z] info: POST /api/users/otp/reset-password {"email":"gurri304@gmail.com","newPassword":"@Newpassword1"}
+[2025-09-14T21:59:35.211Z] info: POST /api/users/otp/reset-password {"email":"gurri304@gmail.com","newPassword":"@Password1"}
+[2025-09-14T21:59:52.160Z] info: POST /api/users/logout-all-devices Request Body Is Empty

@@ -1,9 +1,10 @@
 // Auth Repository
+
 // Import required packags :-
 // Application modules
 import { getDB } from "../../config/mongodb.js";
 import { ObjectId } from "mongodb";
-import ApplicationError from "../../../utils/applicationError.js";
+
 
 // Auth Repository class
 export default class AuthRepository {
@@ -19,7 +20,7 @@ export default class AuthRepository {
     }
 
 
-    // <<< user signup >>>
+    // <<< Insert new user (sign-up / registration) >>>
     async signUp(newUser) {
         try {
             const collection = this.getCollection();
@@ -137,7 +138,7 @@ export default class AuthRepository {
         try {
             const collection = this.getCollection();
 
-            // Clear otp from db
+            // Remove OTP and its expiry from the user's record
             await collection.updateOne(
                 { email: email },
                 {
@@ -153,12 +154,12 @@ export default class AuthRepository {
     }
 
 
-    // <<< Update password after OTP verified >>>
+    // <<< Update user's password after OTP verification >>>
     async updatePassword(email, newPassword) {
         try {
             const collection = this.getCollection();
 
-            // update password
+            // Update the user's password and remove OTP fields
             return await collection.updateOne(
                 { email },
                 {
@@ -175,14 +176,12 @@ export default class AuthRepository {
 
 
     // --- utilities fuctions ---
-    // add refresh token
+    // <<< Add refresh token to user's record >>>
     addRefreshToken = async (userId, refreshToken) => {
         try {
-
-            // 1. get database
             const collection = this.getCollection();
 
-            // 2. collection updateOne
+            // Add the new refresh token to the user's refreshTokens array
             await collection.updateOne(
                 { _id: userId }, // filter
                 { $push: { refreshTokens: refreshToken } } // update

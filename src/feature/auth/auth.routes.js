@@ -10,7 +10,7 @@ import validateUser from "../../middleware/validator.middleware.js";
 import jwtAuth from "../../middleware/jwt.middleware.js";
 
 
-// Initialize router and controller
+// Initialize router and controller :-
 const router = express.Router();
 const authController = new AuthController();
 
@@ -35,7 +35,7 @@ router.post("/signin",
 // Middleware: jwtAuth → ensures user is authenticated
 router.post("/logout",
     jwtAuth,
-    authController.Logout
+    authController.logout
 );
 
 // user router for logout from all devices
@@ -43,9 +43,8 @@ router.post("/logout",
 // Middleware: jwtAuth → ensures user is authenticated
 router.post("/logout-all-devices",
     jwtAuth,
-    authController.LogoutAll
+    authController.logoutAll
 );
-
 
 // Send OTP to user
 // Purpose: Send OTP to user's email for password reset
@@ -64,7 +63,6 @@ router.post("/otp/verify",
 router.post("/otp/reset-password",
     authController.resetPasswordWithOtp
 );
-
 
 // Export router
 export default router;

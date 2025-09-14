@@ -1,8 +1,6 @@
 // Auth Controller
-// Import required packages :-
-// Core modules
-import crypto from 'crypto';
 
+// Import required packages :-
 // Third-party packages
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
@@ -115,7 +113,7 @@ export default class AuthController {
 
 
   // <<< User logout from current device >>>
-  Logout = async (req, res, next) => {
+  logout = async (req, res, next) => {
     try {
       const { refreshToken } = req.body;
       // validate inputs
@@ -140,7 +138,7 @@ export default class AuthController {
 
 
   // <<< User logout from all devices >>>
-  LogoutAll = async (req, res, next) => {
+  logoutAll = async (req, res, next) => {
     try {
       const userId = req.userID;
       if (!userId) {
@@ -157,7 +155,7 @@ export default class AuthController {
   }
 
 
-  // <<< Send OTP for password reset >>>
+  // <<< Send OTP to user email for password reset >>>
   sendOtp = async (req, res, next) => {
     try {
       const { email } = req.body;
@@ -167,13 +165,15 @@ export default class AuthController {
         throw new ApplicationError("User not Found", 404);
       };
 
-      // generating Otp
+      // Generate a 6-digit OTP
       const otp = Math.floor(100000 + Math.random() * 900000).toString();
+      // Set OTP expiry time (10 minutes from now)
       const otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
 
-      // send Otp to db
+      // Store OTP and expiry in the database
       await this.authRepository.setOtp(email, otp, otpExpiry);
 
+      // Send OTP to user's email
       await this.sendOtpEmail(email, otp);
 
       return res.status(200).json({ message: "OTP sent to email" })
@@ -194,7 +194,7 @@ export default class AuthController {
         throw new ApplicationError("Invalid or expired OTP", 404);
       };
 
-      // Clear OTP after successful verification
+      // Clear OTP from database after successful verification
       await this.authRepository.clearOtp(email);
 
       return res.status(200).json({ message: "OTP verified successfully" });
@@ -217,8 +217,10 @@ export default class AuthController {
         throw new ApplicationError("User not Found", 404);
       };
 
+      // Hash the new password before storing
       const hashedPassword = await bcrypt.hash(newPassword, 12);
 
+      // Update the user's password in the database
       await this.authRepository.updatePassword(email, hashedPassword);
 
       return res.status(200).json({ message: "Password reset successful" });
