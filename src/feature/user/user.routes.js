@@ -1,22 +1,43 @@
-// Import required packages
+// User routes 
+
+// Import required packages :-
+// Third-party packages
 import express from 'express';
+
+// Application modules 
 import UserController from './user.controller.js';
 import jwtAuth from '../../middleware/jwt.middleware.js';
 
 
-// Initialize controller and router
+// Initialize router and controller :-
 const router = express.Router();
 const userController = new UserController();
 
 
-// Routes
-// get - user details
-router.get('/get-details/:userId', jwtAuth, (req, res, next) => userController.getUser(req, res, next));
+// Routes :-
+// Get user details by ID
+// Purpose: Fetch a specific user's details
+// Middleware: jwtAuth → ensures user is authenticated
+router.get('/get-details/:userId',
+    jwtAuth,
+    userController.getUser
+);
 
-// get - all user details
-router.get('/get-all-details', jwtAuth, (req, res, next) => userController.getAllUsers(req, res, next));
+// Get all user details
+// Purpose: Fetch details of all users
+// Middleware: jwtAuth → ensures user is authenticated
+router.get('/get-all-details',
+    jwtAuth,
+    userController.getAllUsers
+);
 
-// post - update user details
-router.post('/update-details/:userId', jwtAuth, (req, res, next) => userController.updateById(req, res, next));
+// Update user details
+// Purpose: Update details of a specific user
+// Middleware: jwtAuth → ensures user is authenticated
+router.put('/update-details/:userId',
+    jwtAuth,
+    userController.updateById
+);
 
+// Export router
 export default router
