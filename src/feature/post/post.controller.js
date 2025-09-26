@@ -1,14 +1,22 @@
-// post.controller.js
+// Post Controller
+
+// Import required packages :-
+// Application modules 
 import ApplicationError from "../../../utils/applicationError.js";
 import PostModel from "./post.model.js";
 import PostRepository from "./post.repository.js";
 
+
+// Post Controller class
 export default class PostController {
+  // Initialize repository
   constructor() {
     this.postRepository = new PostRepository();
   }
 
-  async createNewPost(req, res, next) {
+
+  // <<< Create a new post >>>
+  createNewPost = async (req, res, next) => {
     try {
       const userID = req.userID;
       const { caption, status } = req.body;
@@ -17,8 +25,8 @@ export default class PostController {
         throw new ApplicationError("Image file is required", 400);
       }
 
-      if (!caption) {
-        throw new ApplicationError("Caption are required", 400);
+      if (!caption?.trim()) {
+        throw new ApplicationError("Caption is required", 400);
       }
 
       // Allow only valid statuses
@@ -37,16 +45,19 @@ export default class PostController {
 
       await this.postRepository.createNewPost(newPost);
 
-      return res
-        .status(201)
-        .json({ success: true, message: "Post created successfully", newPost });
+      return res.status(201).json({
+        success: true,
+        message: "Post created successfully",
+        newPost,
+      });
     } catch (err) {
       next(err);
     }
   }
 
-  // 5. Get all posts (Pagination)
-  async getAll(req, res, next) {
+
+  // <<< Get all posts (with pagination) >>>
+  getAll = async (req, res, next) => {
     try {
       const caption = req.query.caption || "";
       const page = parseInt(req.query.page) || 1;
@@ -54,14 +65,13 @@ export default class PostController {
 
       const result = await this.postRepository.findAll(page, limit, caption);
 
-      // Application error handling moved here
       if (!result.posts || result.posts.length === 0) {
-        throw new ApplicationError("Posts Not Found", 404);
+        throw new ApplicationError("Posts not found", 404);
       }
 
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
-        message: "All posts",
+        message: "All posts retrieved successfully",
         data: result.posts,
         pagination: {
           totalPosts: result.totalPosts,
@@ -74,55 +84,78 @@ export default class PostController {
     }
   }
 
-  async getPostById(req, res, next) {
+
+  // <<< Get post by ID >>>
+  getPostById = async (req, res, next) => {
     try {
       const postID = req.params.id;
-      if (!postID) throw new ApplicationError("Invalid post ID", 400);
+      if (!postID) {
+        throw new ApplicationError("Invalid post ID", 400);
+      }
 
       const post = await this.postRepository.getPostById(postID);
-      if (!post) throw new ApplicationError("Post not found", 404);
+      if (!post) {
+        throw new ApplicationError("Post not found", 404);
+      }
 
-      return res
-        .status(200)
-        .json({ success: true, message: "Post retrieved", post });
+      return res.status(200).json({
+        success: true,
+        message: "Post retrieved successfully",
+        post,
+      });
     } catch (err) {
       next(err);
     }
   }
 
-  async getPostByUserCredentials(req, res, next) {
+
+  // <<< Get posts by logged-in user >>>
+  getPostByUserCredentials = async (req, res, next) => {
     try {
       const userID = req.userID;
-      if (!userID) throw new ApplicationError("User ID required", 400);
+      if (!userID) {
+        throw new ApplicationError("User ID required", 400);
+      }
 
       const posts = await this.postRepository.getPostByUserCredentials(userID);
-      if (!posts) throw new ApplicationError("No Post Found", 404)
-      console.log(posts)
+      if (!posts) {
+        throw new ApplicationError("No posts found", 404);
+      }
 
-      return res
-        .status(200)
-        .json({ success: true, message: `Posts by user ${userID}`, posts });
+      return res.status(200).json({
+        success: true,
+        message: `Posts by user ${userID}`,
+        posts,
+      });
     } catch (err) {
       next(err);
     }
   }
 
-  async updatePostById(req, res, next) {
+
+  // <<< Update post by ID >>>
+  updatePostById = async (req, res, next) => {
     try {
       const userID = req.userID;
       const postID = req.params.id;
       const data = req.body;
 
-      if (!postID || !userID) throw new ApplicationError("Missing post ID or user ID", 400);
+      if (!postID || !userID) {
+        throw new ApplicationError("Missing post ID or user ID", 400);
+      }
 
-      // prevent userID update
-      if (data.userID) throw new ApplicationError("You cant perform this action", 400);
+      // Prevent userID updates
+      if (data.userID) {
+        throw new ApplicationError("You cannot update userID", 400);
+      }
 
       const updatedPost = await this.postRepository.updatePostById(postID, userID, data);
-      
-      if (!updatedPost) throw new ApplicationError("Post not found or update failed", 404);
 
-      res.status(200).json({
+      if (!updatedPost) {
+        throw new ApplicationError("Post not found or update failed", 404);
+      }
+
+      return res.status(200).json({
         success: true,
         message: "Post updated successfully",
         updatedPost,
@@ -133,18 +166,22 @@ export default class PostController {
   }
 
 
-  // async delete post by id
-  async deletePostById(req, res, next) {
+  // <<< Delete post by ID >>>
+  deletePostById = async (req, res, next) => {
     try {
       const userID = req.userID;
       const postID = req.params.id;
-      if (!postID || !userID) throw new ApplicationError("Post ID And User ID both required", 400);
+
+      if (!postID || !userID) {
+        throw new ApplicationError("Post ID and User ID are required", 400);
+      }
 
       const deletePost = await this.postRepository.deletePostById(postID, userID);
-      if (!deletePost) throw new ApplicationError("Post not found", 404);
-      console.log(deletePost);
+      if (!deletePost) {
+        throw new ApplicationError("Post not found", 404);
+      }
 
-      res.status(201).json({
+      return res.status(200).json({
         success: true,
         message: "Post deleted successfully",
         deletePost,
@@ -154,90 +191,94 @@ export default class PostController {
     }
   }
 
-  // // Additional Task
-  // // 1. Filter by caption
-  // async filterByCaption(req, res, next) {
-  //   try {
-  //     const caption = req.query.caption;
-  //     if (!caption) throw new ApplicationError("Caption is not defined", 400);
 
-  //     const filteredPosts = await PostModel.filterByCaption(caption);
+  /* -------------------------------
+     Additional Tasks (commented out)
+  ----------------------------------
 
-  //     if (filteredPosts.length === 0)
-  //       throw new ApplicationError("Post Not found", 404);
+  // <<< Filter by caption >>>
+  filterByCaption = async (req, res, next) => {
+    try {
+      const caption = req.query.caption;
+      if (!caption) throw new ApplicationError("Caption is not defined", 400);
 
-  //     res.status(200).json({
-  //       success: true,
-  //       message: "Post retrieved by caption",
-  //       filteredPosts,
-  //     });
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // }
+      const filteredPosts = await PostModel.filterByCaption(caption);
 
-  // // 2. Add a feature to save a post as a draft and to achieve a post
-  // async postStatus(req, res, next) {
-  //   try {
-  //     const postID = req.params.id;
-  //     const userID = req.userID;
-  //     const { status } = req.body;
+      if (filteredPosts.length === 0) {
+        throw new ApplicationError("Post not found", 404);
+      }
 
-  //     if (!postID || !userID) throw new ApplicationError("Missing post ID or user ID", 400);
+      return res.status(200).json({
+        success: true,
+        message: "Posts retrieved by caption",
+        filteredPosts,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
 
-  //     const result = await PostModel.postStatus(userID, postID, status);
+  // <<< Update post status (draft/archived) >>>
+  postStatus = async (req, res, next) => {
+    try {
+      const postID = req.params.id;
+      const userID = req.userID;
+      const { status } = req.body;
 
-  //     if (result.error === "NOT_FOUND") {
-  //       throw new ApplicationError("Post Not Found", 404);
-  //     }
+      if (!postID || !userID) {
+        throw new ApplicationError("Missing post ID or user ID", 400);
+      }
 
-  //     if (result.error === "INVALID_TRANSITION") {
-  //       throw new ApplicationError(
-  //         `Invalid status transition from '${result.currentStatus}' to '${result.newStatus}'`,
-  //         400
-  //       );
-  //     }
+      const result = await PostModel.postStatus(userID, postID, status);
 
-  //     res.status(200).json({
-  //       success: true,
-  //       updatedStatus: result.updatedPost,
-  //     });
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // }
+      if (result.error === "NOT_FOUND") {
+        throw new ApplicationError("Post not found", 404);
+      }
 
-  // // 3. Implement sorting of posts based on user engagement and date
-  // async getSortedPosts(req, res, next) {
-  //   try {
-  //     const allowedSorts = ["engagement", "date"];
-  //     const sortBy = req.query.sortBy;
+      if (result.error === "INVALID_TRANSITION") {
+        throw new ApplicationError(
+          `Invalid status transition from '${result.currentStatus}' to '${result.newStatus}'`,
+          400
+        );
+      }
 
-  //     // if sortBy is given but invalid → throw error
-  //     if (sortBy && !allowedSorts.includes(sortBy)) {
-  //       throw new ApplicationError(
-  //         `Invalid sort option '${sortBy}'. Allowed values are: ${allowedSorts.join(", ")}`,
-  //         400
-  //       );
-  //     }
+      return res.status(200).json({
+        success: true,
+        updatedStatus: result.updatedPost,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
 
-  //     // default to "engagement"
-  //     const finalSort = sortBy || "engagement";
+  // <<< Get sorted posts (by engagement/date) >>>
+  getSortedPosts = async (req, res, next) => {
+    try {
+      const allowedSorts = ["engagement", "date"];
+      const sortBy = req.query.sortBy;
 
-  //     const sortedPosts = await PostModel.getPostsSorted(finalSort);
+      if (sortBy && !allowedSorts.includes(sortBy)) {
+        throw new ApplicationError(
+          `Invalid sort option '${sortBy}'. Allowed values are: ${allowedSorts.join(", ")}`,
+          400
+        );
+      }
 
-  //     // if no posts found → throw error
-  //     if (!sortedPosts || sortedPosts.length === 0) {
-  //       throw new ApplicationError("No posts found", 404);
-  //     }
+      const finalSort = sortBy || "engagement";
+      const sortedPosts = await PostModel.getPostsSorted(finalSort);
 
-  //     res.status(200).json({
-  //       success: true,
-  //       message: `Sorted posts by ${finalSort}`,
-  //       data: sortedPosts,
-  //     });
-  //   } catch (err) {
-  //     next(err); // pass error to global error handler
-  //   }
-  // }
+      if (!sortedPosts || sortedPosts.length === 0) {
+        throw new ApplicationError("No posts found", 404);
+      }
+
+      return res.status(200).json({
+        success: true,
+        message: `Sorted posts by ${finalSort}`,
+        data: sortedPosts,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+  */
 }
