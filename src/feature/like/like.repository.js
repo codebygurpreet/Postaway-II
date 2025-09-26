@@ -1,70 +1,81 @@
+// Like Repository
+
+// Import required packages :-
+// Application modules
 import { getDB } from "../../config/mongodb.js";
 import { ObjectId } from "mongodb";
 import LikeModel from "./like.model.js";
 
+// Like Repository class
 export default class LikeRepository {
+  // Initialize collection
+  constructor() {
+    this.collection = "likes";
+  }
 
-    constructor() {
-        this.collection = "likes";
+  // method to get collection
+  getCollection = () => {
+    const db = getDB();
+    return db.collection(this.collection);
+  };
+
+  // <<< Find a like by userId and postId >>>
+  findLike = async (userId, postId) => {
+    try {
+      const collection = this.getCollection();
+
+      // find like for given user and post
+      return await collection.findOne({
+        userId: new ObjectId(userId),
+        postId: new ObjectId(postId),
+      });
+    } catch (err) {
+      throw err;
     }
+  };
 
-    async findLike(userID, postID) {
-        try {
-            const db = getDB();
-            const collection = db.collection(this.collection);
+  // <<< Add a new like >>>
+  addLike = async (userId, postId) => {
+    try {
+      const collection = this.getCollection();
 
-            const like = await collection.findOne({ userID: new ObjectId(userID), postID: new ObjectId(postID) });
+      // create new like object
+      const newLikeObj = new LikeModel(
+        new ObjectId(userId),
+        new ObjectId(postId)
+      );
 
-            return like;
-
-        } catch (err) {
-            throw err;
-        }
+      // insert like into collection
+      return await collection.insertOne(newLikeObj);
+    } catch (err) {
+      throw err;
     }
+  };
 
-    async addLike(userID, postID) {
-        try {
-            const db = getDB();
-            const collection = db.collection(this.collection);
+  // <<< Remove a like >>>
+  removeLike = async (userId, postId) => {
+    try {
+      const collection = this.getCollection();
 
-            const newLikeObj = new LikeModel(new ObjectId(userID), new ObjectId(postID));
-
-            const result = await collection.insertOne(newLikeObj);
-            return result;
-        } catch (err) {
-            throw err;
-        }
-
+      // delete like document for given user and post
+      return await collection.deleteOne({
+        userId: new ObjectId(userId),
+        postId: new ObjectId(postId),
+      });
+    } catch (err) {
+      throw err;
     }
+  };
 
-    async removeLike(userID, postID) {
-        try {
-            const db = getDB();
-            const collection = db.collection(this.collection);
+  // <<< Get all likes for a specific post >>>
+  getAllLikesForPost = async (postId) => {
+    try {
+      const collection = this.getCollection();
 
-            const result = await collection.deleteOne({
-                userID: new ObjectId(userID),
-                postID: new ObjectId(postID)
-            });
-            return result;
-        } catch (err) {
-            throw err;
-        }
-
+      // find all likes for the given post
+      return await collection.find({ postId: new ObjectId(postId) }).toArray();
+    } catch (err) {
+      throw err;
     }
-
-    async getAllLikesForPost(postID) {
-        try {
-            const db = getDB();
-            const collection = db.collection(this.collection);
-
-            const allLikes = await collection.find({
-                postID: new ObjectId(postID)
-            }).toArray();
-            return allLikes;
-        } catch (err) {
-            throw err;
-        }
-
-    }
+  };
 }
