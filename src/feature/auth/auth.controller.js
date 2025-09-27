@@ -160,6 +160,7 @@ export default class AuthController {
     try {
       const { email } = req.body;
 
+      // checking first whether user is exist in the db or not
       const user = await this.authRepository.findByEmail(email);
       if (!user) {
         throw new ApplicationError("User not Found", 404);

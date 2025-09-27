@@ -910,3 +910,23 @@
 [2025-09-16T18:02:03.220Z] info: PUT /api/users/update-details/68b9c430ff3a5a9457416e99 {"name":"Gurri","gender":" Male"}
 [2025-09-16T18:02:04.908Z] info: PUT /api/users/update-details/68b9c430ff3a5a9457416e99 {"name":"Gurri","gender":" Male"}
 [2025-09-16T18:02:17.963Z] info: PUT /api/users/update-details/68b9c430ff3a5a9457416e99 {"name":"Gurri","gender":" Male"}
+[2025-09-26T19:10:29.436Z] info: POST /api/users/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGQ2ZTRiNzk5NDNmZjBmZDc2MTA5MTMiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1ODkxMzcxOSwiZXhwIjoxNzU5NTE4NTE5fQ.J8M9Y6dcg0IDwCjoXS88r3E_1jSutQWQmG2-NfrtnQI"}
+[2025-09-26T19:10:52.679Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-26T19:21:34.693Z] info: POST /api/users/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGQ2ZTc1NTFiZGUyZjRlNmViYjQ2YjciLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1ODkxNDM4OSwiZXhwIjoxNzU5NTE5MTg5fQ.pM6r_VxpVNZx2y74krdtLmS1Ms_nswIcqNvaHaxJ1bc"}
+[2025-09-26T19:21:52.761Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-26T19:22:16.028Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-26T19:23:04.382Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-26T19:24:25.883Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-26T19:25:29.520Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-26T19:25:32.797Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-26T19:26:03.775Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-27T17:59:45.347Z] info: POST /api/users/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGQ4MjU0ZDYwNDQxOWYxODExMzYyYmEiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1ODk5NTc4OSwiZXhwIjoxNzU5NjAwNTg5fQ.NxTyTWmp0TE7xVPmjv2gsw5A4l3mYWZDHVgWBKW6NA8"}
+[2025-09-27T17:59:51.182Z] info: POST /api/users/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGQ4MjU0ZDYwNDQxOWYxODExMzYyYmEiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1ODk5NTc4OSwiZXhwIjoxNzU5NjAwNTg5fQ.NxTyTWmp0TE7xVPmjv2gsw5A4l3mYWZDHVgWBKW6NA8"}
+[2025-09-27T18:04:02.991Z] info: POST /api/users/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGQ4MjU0ZDYwNDQxOWYxODExMzYyYmEiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc1ODk5NTc4OSwiZXhwIjoxNzU5NjAwNTg5fQ.NxTyTWmp0TE7xVPmjv2gsw5A4l3mYWZDHVgWBKW6NA8"}
+[2025-09-27T18:04:41.861Z] info: POST /api/users/logout Request Body Is Empty
+[2025-09-27T18:05:00.150Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-27T18:05:42.006Z] info: POST /api/users/otp/send {"email":"gurri304@gmail.com"}
+[2025-09-27T18:06:35.864Z] info: POST /api/users/otp/verify {"email":"gurri304@gmail.com","otp":"370581"}
+[2025-09-27T18:07:27.312Z] info: POST /api/users/otp/reset-password {"email":"gurri304@gmail.com","newPassword":"@Password2"}
+[2025-09-27T18:07:53.853Z] info: POST /api/users/otp/reset-password {"email":"gurri304@gmail.com","newPassword":"@Password1"}
+[2025-09-27T18:08:12.008Z] info: POST /api/users/logout-all-devices Request Body Is Empty

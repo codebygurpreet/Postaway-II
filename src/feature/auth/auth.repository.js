@@ -183,7 +183,7 @@ export default class AuthRepository {
 
             // Add the new refresh token to the user's refreshTokens array
             await collection.updateOne(
-                { _id: userId }, // filter
+                { _id: new ObjectId(userId) }, // filter
                 { $push: { refreshTokens: refreshToken } } // update
             );
         } catch (err) {
