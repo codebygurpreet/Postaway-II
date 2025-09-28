@@ -61,11 +61,17 @@ export default class UserController {
   // <<< Update user details (no passwords) >>>
   updateById = async (req, res, next) => {
     try {
+      const userIdFromSignIn = req.userID;
       const userId = req.params.userId;
       const { name, gender } = req.body;
 
       if (!userId) {
         throw new ApplicationError("User ID required", 400);
+      }
+
+      // Ensure user is updating their own account
+      if (userIdFromSignIn !== userId) {
+        throw new ApplicationError("Unauthorized: Cannot update another user", 403);
       }
 
       const updateData = {};

@@ -930,3 +930,19 @@
 [2025-09-27T18:07:27.312Z] info: POST /api/users/otp/reset-password {"email":"gurri304@gmail.com","newPassword":"@Password2"}
 [2025-09-27T18:07:53.853Z] info: POST /api/users/otp/reset-password {"email":"gurri304@gmail.com","newPassword":"@Password1"}
 [2025-09-27T18:08:12.008Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-27T18:19:51.549Z] info: GET /api/users/get-details/68d8254d604419f1811362ba Request Body Is Empty
+[2025-09-27T18:20:08.920Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-09-28T08:11:51.572Z] info: GET /api/users/get-details/68d8254d604419f1811362ba Request Body Is Empty
+[2025-09-28T08:12:03.608Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-09-28T08:13:02.451Z] info: PUT /api/users/update-details/68d8254d604419f1811362ba {"name":"Gurri kaur","gender":"Female"}
+[2025-09-28T08:13:12.215Z] info: PUT /api/users/update-details/68d8254d604419f1811362ba {"name":"Gurri","gender":"Male"}
+[2025-09-28T08:13:26.020Z] info: PUT /api/users/update-details/68d825ab604419f1811362bb {"name":"Gurri","gender":"Male"}
+[2025-09-28T08:20:22.938Z] info: PUT /api/users/update-details/68d825df604419f1811362bc {"name":"Gurri","gender":"Male"}
+[2025-09-28T08:20:58.474Z] info: PUT /api/users/update-details/68d825df604419f1811362bc {"name":"Ujjwal Shakeya","gender":"Male"}
+[2025-09-28T08:21:20.355Z] info: PUT /api/users/update-details/68d825ab604419f1811362bb {"name":"Charvee Govilla","gender":"Female"}
+[2025-09-28T08:25:59.847Z] info: PUT /api/users/update-details/68d825ab604419f1811362bb {"name":"Charvee Govilla","gender":"Female"}
+[2025-09-28T08:26:19.955Z] info: PUT /api/users/update-details/68d8254d604419f1811362ba {"name":"Gurri kaur","gender":"Male"}
+[2025-09-28T08:26:23.869Z] info: PUT /api/users/update-details/68d8254d604419f1811362ba {"name":"Gurri","gender":"Male"}
+[2025-09-28T08:26:53.666Z] info: PUT /api/users/update-details/68d825ab604419f1811362bb {"name":"Gurri","gender":"Male"}
+[2025-09-28T08:27:02.569Z] info: PUT /api/users/update-details/68d825df604419f1811362bc {"name":"Gurri","gender":"Male"}
+[2025-09-28T08:27:33.440Z] info: POST /api/users/logout-all-devices Request Body Is Empty
