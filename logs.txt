@@ -997,3 +997,5 @@
 [2025-09-30T17:01:23.785Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"caption":"Chainsaw Man"}
 [2025-09-30T17:01:35.251Z] info: PUT /api/posts/68dc0c773082d7de8e3b31b2 {"caption":"Chainsaw Man"}
 [2025-09-30T17:02:13.675Z] info: DELETE /api/posts/68dc0c773082d7de8e3b31b2 Request Body Is Empty
+[2025-09-30T19:35:58.323Z] info: POST /api/likes/toggle/68d90581c9350c8b1cd49f37 Request Body Is Empty
+[2025-09-30T19:37:46.696Z] info: POST /api/likes/toggle/68d90581c9350c8b1cd49f37 Request Body Is Empty
