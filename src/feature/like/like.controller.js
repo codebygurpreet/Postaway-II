@@ -1,3 +1,4 @@
+
 // Import required packages :-
 // Application modules
 import LikeRepository from "./like.repository.js";
@@ -15,7 +16,7 @@ export default class LikeController {
 
 
   // <<< Toggle like status for a post >>>
-  toggleLike = async (req, res, next) => {
+  togglePostLike = async (req, res, next) => {
     try {
       const userId = req.userID;          // ID of logged-in user
       const postId = req.params.id;       // ID of the post to like/unlike
@@ -52,7 +53,7 @@ export default class LikeController {
 
 
   // <<< Get all likes for a specific post >>>
-  getAllLikesForPost = async (req, res, next) => {
+  getPostLikes = async (req, res, next) => {
     try {
       const postId = req.params.id;       // ID of the post to get likes for
       if (!postId) throw new ApplicationError("Post ID required", 400);

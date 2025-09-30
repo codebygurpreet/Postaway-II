@@ -1,3 +1,5 @@
+// Like routes
+
 // Import required packages :-
 // Third-party packages
 import express from 'express';
@@ -6,36 +8,33 @@ import express from 'express';
 import LikeController from './like.controller.js';
 import jwtAuth from '../../middleware/jwt.middleware.js';
 
-
 // Initialize router and controller :-
 const router = express.Router();
 const likeController = new LikeController();
 
-
 // Routes :-
-// Toggle like status for a specific post
-// Purpose: Add or remove a like from a post
+// Toggle like on a post
+// Purpose: Add or remove like for a specific post
 // Middleware: jwtAuth → ensures user is authenticated
 router.post('/toggle/:id',
     jwtAuth,
-    likeController.toggleLike
+    likeController.togglePostLike
 );
 
-// Get all likes for a specific post
-// Purpose: Retrieve all users who liked a post
-// Middleware: none → public route
+// Get all likes for a post
+// Purpose: Fetch all users who liked a specific post
+// Middleware: public route → no authentication required
 router.get('/:id',
-    likeController.getAllLikesForPost
+    likeController.getPostLikes
 );
 
-// (Optional) Delete all likes for a specific post
-// Purpose: Remove all likes from a post
+// (Optional) Delete all likes for a post
+// Purpose: Remove all likes for a specific post
 // Middleware: jwtAuth → ensures user is authenticated
 // router.delete('/:id',
 //     jwtAuth,
-//     likeController.deleteLike
+//     likeController.removeAllPostLikes
 // );
-
 
 // Export router :-
 export default router;
