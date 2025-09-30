@@ -1,25 +1,49 @@
-// import required packages
+// Comment routes
+
+// Import required packages :-
+// Third-party packages
 import express from 'express';
+
+// Application modules
 import CommentController from './comment.controller.js';
 import jwtAuth from '../../middleware/jwt.middleware.js';
 
-
-// Initialize controller and router
+// Initialize router and controller :-
 const router = express.Router();
 const commentController = new CommentController();
 
-// Routes
+// Routes :-
+// Get all comments for a specific post
+// Purpose: Fetch all comments of a post
+// Middleware: jwtAuth → ensures user is authenticated
+router.get('/:id',
+    jwtAuth,
+    commentController.getAllComment
+);
 
-// GET /:id - Retrieve all comments for a specific post
-router.get("/:id", jwtAuth, (req,res,next)=> commentController.getAllComment(req,res,next))
+// Add a new comment to a specific post
+// Purpose: Create a comment for a post
+// Middleware: jwtAuth → ensures user is authenticated
+router.post('/:id',
+    jwtAuth,
+    commentController.createComment
+);
 
-// POST /:id - Add a new comment to a specific post
-router.post('/:id', jwtAuth, (req,res,next)=> commentController.createComment(req,res,next));
+// Delete a specific comment by ID
+// Purpose: Remove a comment
+// Middleware: jwtAuth → ensures user is authenticated
+router.delete('/:id',
+    jwtAuth,
+    commentController.deleteComment
+);
 
-// // DELETE /:id - Delete a specific comment by ID
-router.delete('/:id', jwtAuth, (req,res,next)=>commentController.deleteComment(req,res,next))
+// Update a specific comment by ID
+// Purpose: Edit a comment
+// Middleware: jwtAuth → ensures user is authenticated
+router.put('/:commentId',
+    jwtAuth,
+    commentController.updateComment
+);
 
-// // PUT /:id - Update a specific comment by ID
-router.put('/:commentId', jwtAuth, (req,res,next)=>commentController.updateComment(req,res,next))
-
+// Export router
 export default router;
