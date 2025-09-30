@@ -13,7 +13,7 @@ export default class LikeRepository {
     this.collection = "likes";
   }
 
-  // method to get collection
+  // Get collection instance
   getCollection = () => {
     const db = getDB();
     return db.collection(this.collection);
@@ -24,11 +24,12 @@ export default class LikeRepository {
     try {
       const collection = this.getCollection();
 
-      // find like for given user and post
+      // Find like for given user and post
       return await collection.findOne({
         userId: new ObjectId(userId),
         postId: new ObjectId(postId),
       });
+
     } catch (err) {
       throw err;
     }
@@ -39,14 +40,15 @@ export default class LikeRepository {
     try {
       const collection = this.getCollection();
 
-      // create new like object
+      // Create new like object
       const newLikeObj = new LikeModel(
         new ObjectId(userId),
         new ObjectId(postId)
       );
 
-      // insert like into collection
+      // Insert like into collection
       return await collection.insertOne(newLikeObj);
+
     } catch (err) {
       throw err;
     }
@@ -57,11 +59,12 @@ export default class LikeRepository {
     try {
       const collection = this.getCollection();
 
-      // delete like document for given user and post
+      // Delete like document for given user and post
       return await collection.deleteOne({
         userId: new ObjectId(userId),
         postId: new ObjectId(postId),
       });
+
     } catch (err) {
       throw err;
     }
@@ -72,8 +75,11 @@ export default class LikeRepository {
     try {
       const collection = this.getCollection();
 
-      // find all likes for the given post
-      return await collection.find({ postId: new ObjectId(postId) }).toArray();
+      // Find all likes for the given post
+      return await collection
+        .find({ postId: new ObjectId(postId) })
+        .toArray();
+
     } catch (err) {
       throw err;
     }
