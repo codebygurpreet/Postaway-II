@@ -946,3 +946,54 @@
 [2025-09-28T08:26:53.666Z] info: PUT /api/users/update-details/68d825ab604419f1811362bb {"name":"Gurri","gender":"Male"}
 [2025-09-28T08:27:02.569Z] info: PUT /api/users/update-details/68d825df604419f1811362bc {"name":"Gurri","gender":"Male"}
 [2025-09-28T08:27:33.440Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-09-28T09:28:42.273Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-28T09:29:53.221Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-28T09:31:18.787Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-28T09:33:07.390Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-28T09:33:52.254Z] info: GET /api/posts/all?page=1&limit=5 Request Body Is Empty
+[2025-09-28T09:34:22.831Z] info: GET /api/posts/all?page=1&limit=2 Request Body Is Empty
+[2025-09-28T09:34:27.086Z] info: GET /api/posts/all?page=2&limit=2 Request Body Is Empty
+[2025-09-28T09:34:32.651Z] info: GET /api/posts/all?page=1&limit=2 Request Body Is Empty
+[2025-09-28T09:34:34.888Z] info: GET /api/posts/all?page=1&limit=5 Request Body Is Empty
+[2025-09-28T09:34:56.034Z] info: GET /api/posts/68d8ffca87ef349e6e27ae5a Request Body Is Empty
+[2025-09-28T09:35:49.932Z] info: GET /api/posts Request Body Is Empty
+[2025-09-28T09:36:10.146Z] info: GET /api/posts Request Body Is Empty
+[2025-09-28T09:52:05.379Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-28T09:52:38.429Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-28T09:53:05.839Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-28T09:54:35.022Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-28T09:54:42.106Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-28T09:56:34.081Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-28T09:57:29.086Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-28T09:58:43.436Z] info: GET /api/posts/all?page=1&limit=5 Request Body Is Empty
+[2025-09-28T09:59:07.361Z] info: GET /api/posts/68d905e2c9350c8b1cd49f39 Request Body Is Empty
+[2025-09-28T09:59:21.889Z] info: GET /api/posts/68d90652c9350c8b1cd49f3a Request Body Is Empty
+[2025-09-28T10:00:35.498Z] info: PUT /api/posts/68d90689c9350c8b1cd49f3b {"caption":"Worship"}
+[2025-09-28T10:02:00.026Z] info: PUT /api/posts/68d90689c9350c8b1cd49f3b {"caption":"Worship"}
+[2025-09-28T10:02:03.195Z] info: PUT /api/posts/68d90689c9350c8b1cd49f3b {"caption":"Worship"}
+[2025-09-28T10:02:11.660Z] info: GET /api/posts Request Body Is Empty
+[2025-09-28T10:02:37.097Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"caption":"Worship"}
+[2025-09-28T10:07:43.622Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"caption":"Chainsaw Man"}
+[2025-09-28T10:08:02.955Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"caption":"Chainsaw Man"}
+[2025-09-28T10:08:14.932Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"caption":"Worship"}
+[2025-09-28T10:08:21.692Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"caption":"Chainsaw Man"}
+[2025-09-28T10:08:25.666Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"userID":"12345","caption":"Chainsaw Man"}
+[2025-09-28T10:08:27.408Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"userID":"12345","caption":"Chainsaw Man"}
+[2025-09-28T10:08:28.875Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"userID":"12345","caption":"Chainsaw Man"}
+[2025-09-28T10:08:47.988Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"userId":"12345","caption":"Chainsaw Man"}
+[2025-09-28T10:09:20.669Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"userId":"12345","caption":"Chainsaw Man","_id":"hey"}
+[2025-09-28T10:09:25.516Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"caption":"Chainsaw Man","_id":"hey"}
+[2025-09-28T10:09:29.068Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"caption":"Chainsaw Man","_id":"hey"}
+[2025-09-28T10:09:36.149Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"caption":"Chainsaw Man"}
+[2025-09-28T10:12:30.892Z] info: DELETE /api/posts/68d905e2c9350c8b1cd49f39 Request Body Is Empty
+[2025-09-28T10:12:36.091Z] info: DELETE /api/posts/68d905e2c9350c8b1cd49f39 Request Body Is Empty
+[2025-09-30T16:59:27.057Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-30T16:59:35.407Z] info: POST /api/posts/ Request Body Is Empty
+[2025-09-30T17:00:04.252Z] info: GET /api/posts/all?page=1&limit=5 Request Body Is Empty
+[2025-09-30T17:00:36.913Z] info: GET /api/posts/68dc0c773082d7de8e3b31b2 Request Body Is Empty
+[2025-09-30T17:00:42.692Z] info: GET /api/posts/68dc0c773082d7de8e3b31b Request Body Is Empty
+[2025-09-30T17:00:45.695Z] info: GET /api/posts/68dc0c773082d7de8e3b31b2 Request Body Is Empty
+[2025-09-30T17:01:03.039Z] info: GET /api/posts Request Body Is Empty
+[2025-09-30T17:01:23.785Z] info: PUT /api/posts/68d90581c9350c8b1cd49f37 {"caption":"Chainsaw Man"}
+[2025-09-30T17:01:35.251Z] info: PUT /api/posts/68dc0c773082d7de8e3b31b2 {"caption":"Chainsaw Man"}
+[2025-09-30T17:02:13.675Z] info: DELETE /api/posts/68dc0c773082d7de8e3b31b2 Request Body Is Empty

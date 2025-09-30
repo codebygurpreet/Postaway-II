@@ -1,47 +1,28 @@
 // Post Controller
 
-// Import required packages :-
-// Application modules 
-import ApplicationError from "../../../utils/applicationError.js";
 import PostModel from "./post.model.js";
 import PostRepository from "./post.repository.js";
+import ApplicationError from "../../../utils/applicationError.js";
 
-
-// Post Controller class
 export default class PostController {
-  // Initialize repository
   constructor() {
     this.postRepository = new PostRepository();
   }
 
-
   // <<< Create a new post >>>
   createNewPost = async (req, res, next) => {
     try {
-      const userID = req.userID;
+      const userId = req.userID;
       const { caption, status } = req.body;
 
-      if (!req.file) {
-        throw new ApplicationError("Image file is required", 400);
-      }
+      if (!req.file) throw new ApplicationError("Image file is required", 400);
+      if (!caption?.trim()) throw new ApplicationError("Caption is required", 400);
 
-      if (!caption?.trim()) {
-        throw new ApplicationError("Caption is required", 400);
-      }
-
-      // Allow only valid statuses
       const allowedStatuses = ["published", "draft"];
-      const postStatus = allowedStatuses.includes(status)
-        ? status
-        : "published";
+      const postStatus = allowedStatuses.includes(status) ? status : "published";
 
       const imageUrl = req.file.filename;
-      const newPost = new PostModel(
-        userID,
-        caption.trim(),
-        imageUrl,
-        postStatus
-      );
+      const newPost = new PostModel(userId, caption.trim(), imageUrl, postStatus);
 
       await this.postRepository.createNewPost(newPost);
 
@@ -55,8 +36,7 @@ export default class PostController {
     }
   }
 
-
-  // <<< Get all posts (with pagination) >>>
+  // <<< Get all posts >>>
   getAll = async (req, res, next) => {
     try {
       const caption = req.query.caption || "";
@@ -84,19 +64,33 @@ export default class PostController {
     }
   }
 
+  // <<< Get posts by logged-in user >>>
+  getPostByUserCredentials = async (req, res, next) => {
+    try {
+      const userId = req.userID;
 
+      const posts = await this.postRepository.getPostByUserCredentials(userId);
+      if (!posts || posts.length === 0) throw new ApplicationError("No posts found", 404);
+
+      return res.status(200).json({
+        success: true,
+        message: `Posts by user ${userId}`,
+        posts,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  
   // <<< Get post by ID >>>
   getPostById = async (req, res, next) => {
     try {
-      const postID = req.params.id;
-      if (!postID) {
-        throw new ApplicationError("Invalid post ID", 400);
-      }
+      const postId = req.params.id;
+      if (!postId) throw new ApplicationError("Invalid post ID", 400);
 
-      const post = await this.postRepository.getPostById(postID);
-      if (!post) {
-        throw new ApplicationError("Post not found", 404);
-      }
+      const post = await this.postRepository.getPostById(postId);
+      if (!post) throw new ApplicationError("Post not found", 404);
 
       return res.status(200).json({
         success: true,
@@ -108,88 +102,50 @@ export default class PostController {
     }
   }
 
-
-  // <<< Get posts by logged-in user >>>
-  getPostByUserCredentials = async (req, res, next) => {
-    try {
-      const userID = req.userID;
-      if (!userID) {
-        throw new ApplicationError("User ID required", 400);
-      }
-
-      const posts = await this.postRepository.getPostByUserCredentials(userID);
-      if (!posts) {
-        throw new ApplicationError("No posts found", 404);
-      }
-
-      return res.status(200).json({
-        success: true,
-        message: `Posts by user ${userID}`,
-        posts,
-      });
-    } catch (err) {
-      next(err);
-    }
-  }
-
-
   // <<< Update post by ID >>>
   updatePostById = async (req, res, next) => {
     try {
-      const userID = req.userID;
-      const postID = req.params.id;
+      const userId = req.userID;
+      const postId = req.params.id;
       const data = req.body;
 
-      if (!postID || !userID) {
-        throw new ApplicationError("Missing post ID or user ID", 400);
-      }
+      if (!postId) throw new ApplicationError("Missing post ID", 400);
+      if (data.userId) throw new ApplicationError("You cannot update userId", 400);
 
-      // Prevent userID updates
-      if (data.userID) {
-        throw new ApplicationError("You cannot update userID", 400);
-      }
-
-      const updatedPost = await this.postRepository.updatePostById(postID, userID, data);
-
-      if (!updatedPost) {
-        throw new ApplicationError("Post not found or update failed", 404);
-      }
+      const updatedPost = await this.postRepository.updatePostById(postId, userId, data);
+      if (!updatedPost) throw new ApplicationError("Post not found or update failed", 404);
 
       return res.status(200).json({
         success: true,
         message: "Post updated successfully",
-        updatedPost,
+        updatedPost: updatedPost.value,
       });
     } catch (err) {
       next(err);
     }
   }
-
 
   // <<< Delete post by ID >>>
   deletePostById = async (req, res, next) => {
     try {
-      const userID = req.userID;
-      const postID = req.params.id;
+      const userId = req.userID;
+      const postId = req.params.id;
 
-      if (!postID || !userID) {
-        throw new ApplicationError("Post ID and User ID are required", 400);
-      }
+      if (!postId) throw new ApplicationError("Post ID is required", 400);
 
-      const deletePost = await this.postRepository.deletePostById(postID, userID);
-      if (!deletePost) {
-        throw new ApplicationError("Post not found", 404);
-      }
+      const deleteResult = await this.postRepository.deletePostById(postId, userId);
+      if (!deleteResult.deletedCount) throw new ApplicationError("Post not found", 404);
 
       return res.status(200).json({
         success: true,
         message: "Post deleted successfully",
-        deletePost,
+        deletePost: deleteResult,
       });
     } catch (err) {
       next(err);
     }
   }
+
 
 
   /* -------------------------------
