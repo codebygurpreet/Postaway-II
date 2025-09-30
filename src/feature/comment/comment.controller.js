@@ -1,40 +1,43 @@
-// import required packages
-import CommentModel from "./comment.model.js";
-// import PostModel from "../post/post.model.js";
+// Comment Controller
+
+// Import required packages :-
+// Application modules 
 import PostRepository from "../post/post.repository.js";
 import CommentRepository from "./comment.repository.js";
 import ApplicationError from "../../../utils/applicationError.js";
 
+// Comment Controller class
 export default class CommentController {
-
+    // Initialize repository
     constructor() {
         this.postRepository = new PostRepository();
         this.commentRepository = new CommentRepository();
     }
 
-    async createComment(req, res) {
+
+    // <<< Create a new comment for a post >>>
+    createComment = async (req, res, next) => {
         try {
-            const userID = req.userID;
-            const postID = req.params.id;
+            const userId = req.userID;
+            const postId = req.params.id;
             const { content } = req.body;
 
-            // Basic validation
-            if (!userID || !postID || !content?.trim()) {
+            // Validate required fields
+            if (!userId || !postId || !content?.trim()) {
                 return res.status(400).json({
                     success: false,
                     message: "User ID, Post ID, and content are required"
                 });
             }
 
-            // Check if postId exists in posts array
-            const postExists = await this.postRepository.getPostById(postID);
-
+            // Check if post exists
+            const postExists = await this.postRepository.getPostById(postId);
             if (!postExists) {
-                throw new ApplicationError(`Post with ID ${postID} does not exist`, 404);
+                throw new ApplicationError(`Post with ID ${postId} does not exist`, 404);
             }
 
-            // Create comment
-            const newComment = await this.commentRepository.createComment(userID, postID, content.trim());
+            // Create new comment
+            const newComment = await this.commentRepository.createComment(userId, postId, content.trim());
             if (!newComment) {
                 throw new ApplicationError("Failed to create comment", 500);
             }
@@ -46,37 +49,35 @@ export default class CommentController {
             });
 
         } catch (err) {
-            console.error("Error in Adding New Comment:", err.message);
+            console.error("Error in createComment:", err.message);
             next(err);
         }
     }
 
 
-    async getAllComment(req, res) {
+    // <<< Get all comments for a specific post with pagination >>>
+    getAllComment = async (req, res, next) => {
         try {
-            const postID = req.params.id;
+            const postId = req.params.id;
             const page = parseInt(req.query.page) || 1;
             const limit = parseInt(req.query.limit) || 5;
 
-            // Get all posts and find the specific one
-            // Check if postId exists in posts array
-            const postExists = await this.postRepository.getPostById(postID);
-
+            // Check if post exists
+            const postExists = await this.postRepository.getPostById(postId);
             if (!postExists) {
-                throw new ApplicationError(`Post with ID ${postID} does not exist`, 404);
+                throw new ApplicationError(`Post with ID ${postId} does not exist`, 404);
             }
 
             if (postExists.status === "draft" || postExists.status === "archived") {
                 throw new ApplicationError("Post is not published. It may be in draft or archived.", 404);
             }
 
-            // Get all comments for the specific post
-            const result = await this.commentRepository.getAllComment(postID, page, limit);
-            console.log(result);
+            // Fetch comments for the post
+            const result = await this.commentRepository.getAllComment(postId, page, limit);
 
             return res.status(200).json({
                 success: true,
-                message: `Comments fetched successfully for the post ${postID}`,
+                message: `Comments fetched successfully for post ${postId}`,
                 comments: result.comments,
                 pagination: {
                     totalComments: result.totalComments,
@@ -92,20 +93,17 @@ export default class CommentController {
     }
 
 
-
-    async deleteComment(req, res, next) {
+    // <<< Delete a comment by ID >>>
+    deleteComment = async (req, res, next) => {
         try {
-            const userID = req.userID;
-            const commentID = req.params.id;
+            const userId = req.userID;
+            const commentId = req.params.id;
 
-            if (!commentID) {
-                throw new ApplicationError("Missing commnet ID", 400);
+            if (!commentId) {
+                throw new ApplicationError("Missing comment ID", 400);
             }
 
-
-            const deletedComment = await this.commentRepository.deleteComment(commentID, userID);
-            console.log(deletedComment);
-
+            const deletedComment = await this.commentRepository.deleteComment(commentId, userId);
             if (!deletedComment) {
                 throw new ApplicationError("Comment not found or unauthorized to delete", 404);
             }
@@ -117,19 +115,20 @@ export default class CommentController {
             });
 
         } catch (err) {
-            console.error("Error in deleting comment:", err.message);
+            console.error("Error in deleteComment:", err.message);
             next(err);
         }
     }
 
 
-    async updateComment(req, res, next) {
+    // <<< Update a comment by ID >>>
+    updateComment = async (req, res, next) => {
         try {
-            const commentID = req.params.commentId;
+            const userId = req.userID;
+            const commentId = req.params.commentId;
             const { content } = req.body;
-            const userID = req.userID;
 
-            if (!commentID) {
+            if (!commentId) {
                 throw new ApplicationError("Missing comment ID", 400);
             }
 
@@ -137,22 +136,20 @@ export default class CommentController {
                 throw new ApplicationError("Comment content cannot be empty", 400);
             }
 
-            const updatedComment = await this.commentRepository.updateComment(
-                commentID,
-                userID,
-                content,
-            );
+            const updatedComment = await this.commentRepository.updateComment(commentId, userId, content.trim());
+            if (!updatedComment) {
+                throw new ApplicationError("Comment not found or not updated", 404);
+            }
 
-            res.status(200).json({
+            return res.status(200).json({
                 success: true,
-                message: `You comment with id ${commentID} has been updated,
-                data: updatedComment`,
+                message: `Comment with ID ${commentId} updated successfully`,
+                data: updatedComment
             });
+            
         } catch (err) {
-            next(err); // calling next with error, error will be caught by errorhandler Middleware
+            next(err);
         }
     }
-
-
 
 }
