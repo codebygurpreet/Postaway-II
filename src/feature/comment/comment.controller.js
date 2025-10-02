@@ -1,10 +1,11 @@
 // Comment Controller
 
 // Import required packages :-
-// Application modules 
+// Application modules
 import PostRepository from "../post/post.repository.js";
 import CommentRepository from "./comment.repository.js";
 import ApplicationError from "../../../utils/applicationError.js";
+import CommentModel from "./comment.model.js"; // Moved model usage to Controller
 
 // Comment Controller class
 export default class CommentController {
@@ -14,20 +15,16 @@ export default class CommentController {
         this.commentRepository = new CommentRepository();
     }
 
-
     // <<< Create a new comment for a post >>>
     createComment = async (req, res, next) => {
         try {
-            const userId = req.userID;
+            const userId = req.userID; // user from auth middleware
             const postId = req.params.id;
             const { content } = req.body;
 
             // Validate required fields
             if (!userId || !postId || !content?.trim()) {
-                return res.status(400).json({
-                    success: false,
-                    message: "User ID, Post ID, and content are required"
-                });
+                throw new ApplicationError("User ID, Post ID, and content are required", 400);
             }
 
             // Check if post exists
@@ -36,24 +33,25 @@ export default class CommentController {
                 throw new ApplicationError(`Post with ID ${postId} does not exist`, 404);
             }
 
-            // Create new comment
-            const newComment = await this.commentRepository.createComment(userId, postId, content.trim());
-            if (!newComment) {
+            // Create comment object from model
+            const newComment = new CommentModel(userId, postId, content.trim());
+
+            // Save new comment
+            const savedComment = await this.commentRepository.createComment(newComment);
+            if (!savedComment) {
                 throw new ApplicationError("Failed to create comment", 500);
             }
 
             return res.status(201).json({
                 success: true,
                 message: "Comment added successfully",
-                data: newComment
+                data: savedComment
             });
 
         } catch (err) {
-            console.error("Error in createComment:", err.message);
             next(err);
         }
     }
-
 
     // <<< Get all comments for a specific post with pagination >>>
     getAllComment = async (req, res, next) => {
@@ -69,7 +67,7 @@ export default class CommentController {
             }
 
             if (postExists.status === "draft" || postExists.status === "archived") {
-                throw new ApplicationError("Post is not published. It may be in draft or archived.", 404);
+                throw new ApplicationError("Post is not published. It may be in draft or archived.", 403);
             }
 
             // Fetch comments for the post
@@ -87,11 +85,9 @@ export default class CommentController {
             });
 
         } catch (err) {
-            console.error("Error in getAllComment:", err.message);
             next(err);
         }
     }
-
 
     // <<< Delete a comment by ID >>>
     deleteComment = async (req, res, next) => {
@@ -110,16 +106,13 @@ export default class CommentController {
 
             return res.status(200).json({
                 success: true,
-                message: "Comment deleted successfully",
-                data: deletedComment
+                message: "Comment deleted successfully"
             });
 
         } catch (err) {
-            console.error("Error in deleteComment:", err.message);
             next(err);
         }
     }
-
 
     // <<< Update a comment by ID >>>
     updateComment = async (req, res, next) => {
@@ -146,10 +139,9 @@ export default class CommentController {
                 message: `Comment with ID ${commentId} updated successfully`,
                 data: updatedComment
             });
-            
+
         } catch (err) {
             next(err);
         }
     }
-
 }

@@ -1006,3 +1006,21 @@
 [2025-09-30T19:49:47.012Z] info: GET /api/likes/68d90581c9350c8b1cd49f37 Request Body Is Empty
 [2025-09-30T19:49:52.259Z] info: POST /api/likes/toggle/68d90581c9350c8b1cd49f37 Request Body Is Empty
 [2025-09-30T19:49:58.408Z] info: GET /api/likes/68d90581c9350c8b1cd49f37 Request Body Is Empty
+[2025-10-02T16:07:24.440Z] info: POST /api/comments/68d90581c9350c8b1cd49f37 {"content":"ujjwal made this anime he is best anime maker also"}
+[2025-10-02T16:08:33.965Z] info: POST /api/comments/68d90581c9350c8b1cd49f37 {"content":"i love this anime"}
+[2025-10-02T16:09:19.714Z] info: GET /api/comments/68d90581c9350c8b1cd49f37?page=1&limit=5 Request Body Is Empty
+[2025-10-02T16:11:09.755Z] info: PUT /api/comments/68dea33c9b91d5740b247a6b {"content":"gurri made this anime"}
+[2025-10-02T16:11:25.206Z] info: PUT /api/comments/68dea3819b91d5740b247a6c {"content":"gurri made this anime"}
+[2025-10-02T16:14:56.751Z] info: PUT /api/comments/68dea3819b91d5740b247a6c {"content":"gurri made this anime"}
+[2025-10-02T16:15:06.792Z] info: PUT /api/comments/68dea33c9b91d5740b247a6b {"content":"gurri made this anime"}
+[2025-10-02T16:15:08.532Z] info: PUT /api/comments/68dea33c9b91d5740b247a6b {"content":"gurri made this anime"}
+[2025-10-02T16:15:21.731Z] info: PUT /api/comments/68dea33c9b91d5740b247a6b {"content":"gurri made this anime"}
+[2025-10-02T16:15:25.443Z] info: PUT /api/comments/68dea33c9b91d5740b247a6b {"content":"gurri made this anime hi"}
+[2025-10-02T16:15:30.579Z] info: PUT /api/comments/68dea33c9b91d5740b247a6b {"content":"gurri made this anime hi"}
+[2025-10-02T16:15:56.527Z] info: DELETE /api/comments/68dea3819b91d5740b247a6c Request Body Is Empty
+[2025-10-02T16:16:14.994Z] info: DELETE /api/comments/68dea33c9b91d5740b247a6b%0A Request Body Is Empty
+[2025-10-02T16:16:16.994Z] info: DELETE /api/comments/68dea33c9b91d5740b247a6b%0A Request Body Is Empty
+[2025-10-02T16:17:48.588Z] info: DELETE /api/comments/68dea3819b91d5740b247a6c Request Body Is Empty
+[2025-10-02T16:18:10.750Z] info: DELETE /api/comments/68dea33c9b91d5740b247a6b Request Body Is Empty
+[2025-10-02T16:19:31.404Z] info: POST /api/comments/68d90581c9350c8b1cd49f37 {"content":"i love this anime"}
+[2025-10-02T16:19:37.541Z] info: POST /api/comments/68d90581c9350c8b1cd49f37 {"content":"i love this anime"}
