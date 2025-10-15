@@ -1,6 +1,7 @@
 // Import required packages
 import "./env.js"
 import express from "express";
+import cookieParser from "cookie-parser";
 
 // Import middlewares
 import loggerMiddleware from "./src/middleware/logger.middleware.js";
@@ -24,6 +25,7 @@ const app = express();
 // Middleware setup
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse form data
+app.use(cookieParser()); // enabling cookie for all routes 
 app.use(loggerMiddleware); // Log every request
 
 // Routes

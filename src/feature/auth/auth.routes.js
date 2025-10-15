@@ -48,6 +48,15 @@ router.post("/logout-all-devices",
     authController.logoutAll
 );
 
+/**
+ * Route: POST /refresh-token
+ * Purpose: Generate a new access token using a valid refresh token
+ * Middleware: None → works even if access token is expired (relies on refresh token)
+ */
+router.post("/refresh-token",
+    authController.refreshToken
+);
+
 // Send OTP to user
 // Purpose: Send OTP to user's email for password reset
 router.post("/otp/send",

@@ -1,30 +1,40 @@
-// import required packages
+// imported required packages
 import jwt from "jsonwebtoken";
+import AuthRepository from "../feature/auth/auth.repository.js";
 
-const jwtAuth = (req, res, next) => {
+const authRepository = new AuthRepository();
 
-    // 1. read the token
-    const token = req.headers['authorization']; 
+const jwtAuth = async (req, res, next) => {
 
-    // 2. if no token , send error
-    if(!token){
-        return res.status(401).send("Unauthorized")
-    }
+  // 1. read the tokens either from coockies or from the authorization headers
+  const token = req.cookies.accessToken;
+
+  // 2. checking if token is provided
+  if (!token && req.headers.authorization) {
+    const parts = req.headers.authorization.split(" ");
+    if (parts.length === 2 && parts[0] === "Bearer") token = parts[1];
+  }
+
+  if (!token) return res.status(401).json({ error: "Unauthorized, token missing" });
+
+  // 3. check if the token is valid
+  try {
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await authRepository.findById(payload.userID);
     
-    // 3. check if token is valid
-    try{
-        const payload =  jwt.verify(token,
-            "x8T0Gv2zmfOgOAa2tCcvLOaaOPuI2roE"
-        )
-        req.userID = payload.userID;
-        console.log(payload);
-    }catch(err){
-        // 4. return err
-        console.log(err)
-        return res.status(401).send("Unauthorized")
+    if (!user || user.tokenVersion !== payload.tokenVersion) {
+      return res.status(401).json({ error: "Unauthorized, token invalidated" });
     }
 
-    // 5. call next middleware
+    req.userID = user._id;
+    req.user = user;
     next();
-}
+
+
+  } catch (err) {
+    const message = err.name === "TokenExpiredError" ? "Token expired" : "Invalid token";
+    return res.status(401).json({ error: message });
+  }
+};
+
 export default jwtAuth;

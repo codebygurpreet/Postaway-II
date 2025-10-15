@@ -1211,3 +1211,29 @@
 [2025-10-12T18:50:11.707Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
 [2025-10-12T18:50:14.241Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
 [2025-10-12T18:50:16.327Z] info: POST /api/friends/response-to-request/68ea941149687b9b45babc51 {"action":"accept"}
+[2025-10-15T18:55:30.549Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T18:59:07.686Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T19:00:15.383Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T19:03:03.330Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T19:04:33.367Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T19:04:42.987Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T19:06:41.120Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T19:06:43.566Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T19:09:04.289Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T19:09:09.087Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T19:12:04.136Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T19:14:48.864Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T19:15:17.578Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-15T19:19:07.782Z] info: POST /api/users/logout Request Body Is Empty
+[2025-10-15T19:21:38.315Z] info: POST /api/users/logout Request Body Is Empty
+[2025-10-15T19:31:37.689Z] info: POST /api/users/logout Request Body Is Empty
+[2025-10-15T19:32:40.636Z] info: POST /api/users/logout Request Body Is Empty
+[2025-10-15T19:33:42.551Z] info: POST /api/users/logout Request Body Is Empty
+[2025-10-15T19:36:07.907Z] info: POST /api/users/logout Request Body Is Empty
+[2025-10-15T19:37:45.667Z] info: POST /api/users/logout Request Body Is Empty
+[2025-10-15T19:38:25.525Z] info: POST /api/users/logout Request Body Is Empty
+[2025-10-15T19:38:56.897Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-10-15T19:39:09.984Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-10-15T19:40:34.660Z] info: POST /api/users/otp/send {"email":"gurri304@gmail.com"}
+[2025-10-15T19:41:14.277Z] info: POST /api/users/otp/verify {"email":"gurri304@gmail.com","otp":"181713"}
+[2025-10-15T19:42:33.713Z] info: POST /api/users/otp/reset-password {"email":"gurri304@gmail.com","newPassword":"@Password2","resetToken":"7dfa2456059356e8f1bc2e2df800e9e601d36de5523f9eb9829ecbf99703660d"}

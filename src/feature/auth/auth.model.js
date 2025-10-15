@@ -1,5 +1,6 @@
 // Auth Model
 
+// Auth Model class
 export default class AuthModel {
   constructor(name, email, password, gender, avatar) {
     this.name = name;
