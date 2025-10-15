@@ -8,6 +8,7 @@ import express from "express";
 import AuthController from "./auth.controller.js";
 import validateUser from "../../middleware/validator.middleware.js";
 import jwtAuth from "../../middleware/jwt.middleware.js";
+import upload from "../../middleware/multer.middleware.js";
 
 
 // Initialize router and controller :-
@@ -20,6 +21,7 @@ const authController = new AuthController();
 // Purpose: Register a new user
 // Middleware: validateUser → ensures body has required fields
 router.post("/signup",
+    upload.single("avatar"),
     validateUser,
     authController.signUp
 );

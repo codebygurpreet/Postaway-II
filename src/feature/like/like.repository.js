@@ -26,8 +26,8 @@ export default class LikeRepository {
 
       // Find like for given user and post
       return await collection.findOne({
-        userId: new ObjectId(userId),
-        postId: new ObjectId(postId),
+        userId: userId,
+        postId: postId,
       });
 
     } catch (err) {
@@ -41,10 +41,7 @@ export default class LikeRepository {
       const collection = this.getCollection();
 
       // Create new like object
-      const newLikeObj = new LikeModel(
-        new ObjectId(userId),
-        new ObjectId(postId)
-      );
+      const newLikeObj = new LikeModel(userId, postId);
 
       // Insert like into collection
       return await collection.insertOne(newLikeObj);
@@ -61,8 +58,8 @@ export default class LikeRepository {
 
       // Delete like document for given user and post
       return await collection.deleteOne({
-        userId: new ObjectId(userId),
-        postId: new ObjectId(postId),
+        userId: userId,
+        postId: postId,
       });
 
     } catch (err) {
@@ -77,7 +74,7 @@ export default class LikeRepository {
 
       // Find all likes for the given post
       return await collection
-        .find({ postId: new ObjectId(postId) })
+        .find({ postId: postId })
         .toArray();
 
     } catch (err) {

@@ -25,8 +25,13 @@ export default class AuthController {
     try {
       const { name, email, password, gender } = req.body;
 
-      if (!name || !email || !password || !gender) {
+      if (!name || !email || !password || !gender || !req.file) {
         throw new ApplicationError("All fields are required", 400);
+      }
+
+      let allowedGenders = ["male", "female", "other"];
+      if (!allowedGenders.includes(gender.toLowerCase())) {
+        throw new ApplicationError("Invalid gender", 400);
       }
 
       const existingUser = await this.authRepository.findByEmail(email);
@@ -39,7 +44,8 @@ export default class AuthController {
       const hashedPassword = await bcrypt.hash(password, 12);
 
       // Create new user instance
-      const user = new AuthModel(name, email, hashedPassword, gender);
+      const imageUrl = req.file.filename;
+      const user = new AuthModel(name, email, hashedPassword, gender.toLowerCase(), imageUrl);
 
       // Save user to database
       const result = await this.authRepository.signUp(user)

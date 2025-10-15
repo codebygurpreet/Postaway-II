@@ -93,7 +93,12 @@ export default class UserController {
             400
           );
         }
-        updateData.gender = gender.trim();
+        updateData.gender = gender.toLowerCase().trim();
+      }
+
+      // if avatar file is uploaded, add filename to updateData
+      if (req.file){
+        updateData.avatar = req.file.filename;
       }
 
       // If no fields provided at all

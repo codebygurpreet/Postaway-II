@@ -1,198 +1,131 @@
-// imported modules
+// Friendship Repository
+
+// Import required packages :-
+// Application modules
 import { getDB } from "../../config/mongodb.js";
 import { ObjectId } from "mongodb";
 
-import UserRepository from "../user/user.repository.js";
-import FriendshipModel from "./friendship.model.js";
-
-// repository class
+// Repository class
 export default class FriendshipRepository {
 
     constructor() {
-        this.collection = 'friendships';
-        this.userRepository = new UserRepository();
+        this.collection = "friendships";
     }
 
+    // <<< Get collection reference >>>
     getCollection = async () => {
         const db = getDB();
         return db.collection(this.collection);
-    }
+    };
 
+    // <<< Get friends of a user >>>
     getFriends = async (userId) => {
-        try {
-            // write you code down here
-            const collection = await this.getCollection();
+        const collection = await this.getCollection();
 
-            const requests = await collection.find({
-                status: { $in: ['accepted'] },
-                $or: [
-                    { userId: userId },
-                    { friendId: userId }
-                ]
-            }).toArray();
-            console.log(requests);
+        const requests = await collection.find({
+            status: "accepted",
+            $or: [
+                { userId: userId },
+                { friendId: userId }
+            ]
+        }).toArray();
 
-            return requests
-        } catch (err) {
-            throw err;
-        }
+        return requests;
     };
 
+    // <<< Get pending friend requests for a user >>>
     getPendingRequests = async (userId) => {
-        try {
-            // write you code down here
-            const collection = await this.getCollection();
+        const collection = await this.getCollection();
 
-            const requests = await collection.find({
-                friendId: userId,
-                status: { $in: ['pending'] },
-            }).toArray();
+        const requests = await collection.find({
+            friendId: userId,
+            status: "pending",
+        }).toArray();
 
-            return requests
-
-        } catch (err) {
-            throw err;
-        }
+        return requests;
     };
 
-    toggleFriendship = async (userId, friendId) => {
-        try {
-            // write you code down here
-            const collection = await this.getCollection();
+    // <<< Toggle friendship (send request / cancel request / unfriend) >>>
+    toggleFriendship = async (friendship) => {
+        const collection = await this.getCollection();
 
-            // Check if friendship already exists
-            const existingFriendship = await collection.findOne({
-                $or: [
-                    { userId: userId, friendId: friendId },
-                    {
-                        userId: friendId,
-                        friendId: userId,
-                    }
-                ]
-            });
-            console.log(existingFriendship);
+        const userId = friendship.userId;
+        const friendId = friendship.friendId;
 
-            // Case 1: No friendship → create request
-            if (!existingFriendship) {
-                const newFriendship = new FriendshipModel(userId, friendId, 'pending');
-                const result = await collection.insertOne(newFriendship);
-                return {
-                    message: "Friendship request sent",
-                    data: { ...newFriendship, _id: result.insertedId },
-                };
+        // Check if friendship already exists
+        const existing = await collection.findOne({
+            $or: [
+                { userId, friendId },
+                { userId: friendId, friendId: userId }
+            ]
+        });
 
-            }
-
-            // Case 2: Pending → cancel request
-            if (existingFriendship.status === 'pending') {
-                await collection.deleteOne({
-                    _id: existingFriendship._id
-                });
-                return {
-                    message: "Friendship request cancelled",
-                    data: existingFriendship,
-                };
-
-            }
-
-            // Case 3: Accepted → unfriend
-            if (existingFriendship.status === 'accepted') {
-                await collection.deleteOne({
-                    _id: existingFriendship._id
-                });
-                return {
-                    message: "Friend removed",
-                    data: existingFriendship,
-                };
-            };
-
+        // Case 1: No friendship → create request
+        if (!existing) {
+            const result = await collection.insertOne(friendship);
             return {
-                message: "No action taken",
-                data: existingFriendship,
+                message: "Friendship request sent",
+                data: { ...friendship, _id: result.insertedId },
             };
-
-            // if (existingFriendship.status === 'pending') {
-            //     if (existingFriendship.userId === userId) {
-            //         throw new Error('Friend request already sent');
-            //     }
-            //     const result = await collection.updateOne(
-            //         {
-            //             _id: new ObjectId(existingFriendship._id)
-            //         },
-            //         {
-            //             $set: {
-            //                 status: 'accepted',
-            //                 updatedAt: new Date()
-            //             }
-            //         }
-            //     )
-            // return result;
-            // };
-        } catch (err) {
-            throw err;
         }
+
+        // Case 2: Pending → cancel request
+        if (existing.status === "pending") {
+            await collection.deleteOne({ _id: existing._id });
+            return {
+                message: "Friendship request cancelled",
+                data: existing,
+            };
+        }
+
+        // Case 3: Accepted → unfriend
+        if (existing.status === "accepted") {
+            await collection.deleteOne({ _id: existing._id });
+            return {
+                message: "Friend removed",
+                data: existing,
+            };
+        }
+
+        // No condition met → return null
+        return null;
     };
 
+    // <<< Respond to friend request (accpet / reject) >>>
     responseToRequest = async (userId, friendId, action) => {
-        try {
-            const collection = await this.getCollection();
+        const collection = await this.getCollection();
 
-            // Check if friendship already exists
-            const existingFriendship = await collection.findOne({
-                $or: [
-                    {
-                        userId: userId,
-                        friendId: friendId,
-                        status: "pending"
-                    },
-                    {
-                        userId: friendId, friendId: userId,
-                        status: "pending"
-                    }
-                ]
-            });
+        const requesterId = friendId;
+        const receiverId = userId;
 
-            // Case 1: No friendship → throw error
-            if (!existingFriendship) {
-                return {
-                    message: "No friendship request found",
-                    data: null,
-                }
-            }
+        // Check if pending friendship exists
+        const existing = await collection.findOne({
+            userId: requesterId, friendId: receiverId, status: "pending"
+        });
 
-            // Case 2: Accept → update status to accepted
-            if (existingFriendship.status === 'pending' && action === 'accept') {
-                const result = await collection.updateOne(
-                    {
-                        _id: existingFriendship._id
-                    },
-                    {
-                        $set: {
-                            status: 'accepted',
-                            updatedAt: new Date(),
-                        }
-                    });
-                return result;
-            }
+        if (!existing) return null;
 
-            // Case 3: Reject → delete the friendship
-            if (existingFriendship.status === 'pending' && action === 'reject') {
-                await collection.deleteOne({
-                    _id: existingFriendship._id
-                })
-                return {
-                    message: "request rejected",
-                    data: existingFriendship,
-                };
-            }
-
+        // Accept → update to accepted
+        if (action === "accept") {
+            await collection.updateOne(
+                { _id: existing._id },
+                { $set: { status: "accepted", updatedAt: new Date() } }
+            );
             return {
-                message: "No action taken",
-                data: existingFriendship,
+                message: "Friend request accepted",
+                data: { ...existing, status: "accepted" },
             };
-
-        } catch (err) {
-            throw err;
         }
+
+        // Reject → delete the friendship
+        if (action === "reject") {
+            await collection.deleteOne({ _id: existing._id });
+            return {
+                message: "Friend request rejected",
+                data: existing,
+            };
+        }
+
+        return null;
     };
 }

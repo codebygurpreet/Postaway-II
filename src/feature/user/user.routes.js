@@ -7,6 +7,7 @@ import express from 'express';
 // Application modules 
 import UserController from './user.controller.js';
 import jwtAuth from '../../middleware/jwt.middleware.js';
+import upload from '../../middleware/multer.middleware.js';
 
 
 // Initialize router and controller :-
@@ -35,6 +36,7 @@ router.get('/get-all-details',
 // Purpose: Update details of a specific user
 // Middleware: jwtAuth → ensures user is authenticated
 router.put('/update-details/:userId',
+    upload.single("avatar"),
     jwtAuth,
     userController.updateById
 );

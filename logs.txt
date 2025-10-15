@@ -1024,3 +1024,190 @@
 [2025-10-02T16:18:10.750Z] info: DELETE /api/comments/68dea33c9b91d5740b247a6b Request Body Is Empty
 [2025-10-02T16:19:31.404Z] info: POST /api/comments/68d90581c9350c8b1cd49f37 {"content":"i love this anime"}
 [2025-10-02T16:19:37.541Z] info: POST /api/comments/68d90581c9350c8b1cd49f37 {"content":"i love this anime"}
+[2025-10-04T18:03:52.326Z] info: GET /api/friends/get-friends/68b9c45dff3a5a9457416e9a Request Body Is Empty
+[2025-10-04T18:05:05.523Z] info: POST /api/friends/toggle-friendship/68d825ab604419f1811362bb Request Body Is Empty
+[2025-10-04T18:34:58.608Z] info: GET /api/friends/get-friends/68e161d181acab5a95181250 Request Body Is Empty
+[2025-10-04T18:35:10.516Z] info: POST /api/friends/toggle-friendship/68d825ab604419f1811362bb Request Body Is Empty
+[2025-10-04T18:35:12.065Z] info: POST /api/friends/toggle-friendship/68d825ab604419f1811362bb Request Body Is Empty
+[2025-10-04T18:36:14.955Z] info: POST /api/friends/response-to-request/68d825ab604419f1811362bb {"action":"reject"}
+[2025-10-04T18:36:41.039Z] info: POST /api/friends/response-to-request/68d825ab604419f1811362bb {"action":"reject"}
+[2025-10-11T16:44:08.444Z] info: POST /api/users/logout {"refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2OGVhODg5NGNkYjlhOGQ3ZTA2NDliOTgiLCJlbWFpbCI6Imd1cnJpMzA0QGdtYWlsLmNvbSIsImlhdCI6MTc2MDIwMDk2MiwiZXhwIjoxNzYwODA1NzYyfQ.olm-yYJLLhQ7ygeIMmJLxED04ScLO0w3FiIH1SAN3Vc"}
+[2025-10-11T16:45:17.686Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-10-11T16:45:48.363Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-10-11T16:46:11.243Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-10-11T17:48:46.886Z] info: GET /api/users/get-details/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-11T17:49:06.293Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-11T17:49:34.550Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 {"name":"Gurri","gender":"Female"}
+[2025-10-11T17:49:43.686Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 {"name":"Gurri","gender":"Male"}
+[2025-10-11T17:49:49.196Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 {"name":"Gurri","gender":"male"}
+[2025-10-11T17:51:30.065Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 {"name":"Gurri","gender":"ale"}
+[2025-10-11T17:52:08.451Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 {"name":"Gurri","gender":"ale"}
+[2025-10-11T17:52:17.248Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 {"name":"Gurpreet","gender":"Male"}
+[2025-10-11T17:57:50.368Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 {"name":"Gurpreet","gender":"Male"}
+[2025-10-11T17:57:56.315Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 {"name":"Gurpreet","gender":"Mle"}
+[2025-10-11T17:58:38.534Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-11T17:59:59.634Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-11T18:00:15.576Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-11T18:00:28.172Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-11T18:00:54.774Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-11T18:00:56.296Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-11T18:01:11.968Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-11T18:01:24.717Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-11T18:03:09.530Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-11T18:03:20.281Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-11T18:03:36.286Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-11T18:03:57.384Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-11T18:04:37.090Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-11T18:04:59.777Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-11T18:05:34.689Z] info: GET /api/posts/all?page=1&limit=5 Request Body Is Empty
+[2025-10-11T18:05:58.832Z] info: GET /api/posts/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-11T18:06:12.290Z] info: GET /api/posts/68ea9c4b35ef2c27f06566f8 Request Body Is Empty
+[2025-10-11T18:06:27.177Z] info: GET /api/posts Request Body Is Empty
+[2025-10-11T18:06:40.795Z] info: GET /api/posts Request Body Is Empty
+[2025-10-11T18:07:08.380Z] info: PUT /api/posts/68dc0c773082d7de8e3b31b2 {"caption":"Chainsaw Man","_id":"hey"}
+[2025-10-11T18:07:21.301Z] info: PUT /api/posts/68ea9bf835ef2c27f06566f5 {"caption":"Chainsaw Man","_id":"hey"}
+[2025-10-11T18:07:42.294Z] info: PUT /api/posts/68ea9bf835ef2c27f06566f5 {"caption":"Chainsaw Man"}
+[2025-10-11T18:07:54.029Z] info: PUT /api/posts/68ea9bf835ef2c27f06566f5 {"caption":"Bentaly"}
+[2025-10-11T18:08:02.020Z] info: PUT /api/posts/68ea9c4b35ef2c27f06566f8 {"caption":"Bentaly"}
+[2025-10-11T18:08:26.243Z] info: DELETE /api/posts/68ea9c4b35ef2c27f06566f8 Request Body Is Empty
+[2025-10-11T18:08:40.720Z] info: DELETE /api/posts/68ea9c4b35ef2c27f06566f8 Request Body Is Empty
+[2025-10-11T18:08:47.054Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-12T15:56:42.648Z] info: POST /api/comments/68ea9bf835ef2c27f06566f5 {"content":"i love this anime"}
+[2025-10-12T15:56:56.959Z] info: POST /api/comments/68ea9c0d35ef2c27f06566f6 {"content":"i love this anime"}
+[2025-10-12T15:57:05.040Z] info: POST /api/comments/68ea9c3535ef2c27f06566f7 {"content":"i love this anime"}
+[2025-10-12T15:57:12.930Z] info: POST /api/comments/68ea9d2f35ef2c27f06566f9 {"content":"i love this anime"}
+[2025-10-12T15:58:05.808Z] info: POST /api/comments/68ea9bf835ef2c27f06566f5 {"content":"i love this anime"}
+[2025-10-12T15:58:12.801Z] info: POST /api/comments/68ea9c0d35ef2c27f06566f6 {"content":"i love this anime"}
+[2025-10-12T15:58:20.892Z] info: POST /api/comments/68ea9c3535ef2c27f06566f7 {"content":"i love this anime"}
+[2025-10-12T15:58:27.173Z] info: POST /api/comments/68ea9d2f35ef2c27f06566f9 {"content":"i love this anime"}
+[2025-10-12T15:58:54.700Z] info: GET /api/comments/68d90581c9350c8b1cd49f37?page=1&limit=5 Request Body Is Empty
+[2025-10-12T15:59:07.705Z] info: GET /api/comments/68ea9bf835ef2c27f06566f5?page=1&limit=5 Request Body Is Empty
+[2025-10-12T15:59:44.883Z] info: DELETE /api/comments/68ea9d2f35ef2c27f06566f9 Request Body Is Empty
+[2025-10-12T16:00:45.511Z] info: DELETE /api/comments/68ebd023ce41caac1b4780b9 Request Body Is Empty
+[2025-10-12T16:00:56.001Z] info: DELETE /api/comments/68ebd023ce41caac1b4780b9 Request Body Is Empty
+[2025-10-12T16:02:46.320Z] info: DELETE /api/comments/68ebcfd8ce41caac1b4780b5 Request Body Is Empty
+[2025-10-12T16:03:21.030Z] info: GET /api/comments/68ea9bf835ef2c27f06566f5?page=1&limit=5 Request Body Is Empty
+[2025-10-12T16:03:33.679Z] info: GET /api/comments/68ea9d2f35ef2c27f06566f9?page=1&limit=5 Request Body Is Empty
+[2025-10-12T16:04:03.321Z] info: PUT /api/comments/68ebcfbace41caac1b4780b2 {"content":"gurri made this anime hi"}
+[2025-10-12T16:04:18.311Z] info: PUT /api/comments/68ebcfbace41caac1b4780b2 {"content":"gurri made this anime hi"}
+[2025-10-12T16:04:20.743Z] info: PUT /api/comments/68ebcfbace41caac1b4780b2 {"content":"gurri made this anime hi"}
+[2025-10-12T16:04:30.304Z] info: PUT /api/comments/68ebcfbace41caac1b4780b2 {"content":"gurri made this anime hi"}
+[2025-10-12T16:04:35.757Z] info: PUT /api/comments/68ebcfbace41caac1b4780b2 {"content":"gurri made this anime hi"}
+[2025-10-12T16:04:40.577Z] info: PUT /api/comments/68ebcfbace41caac1b4780b2 {"content":"gurri made this anime h"}
+[2025-10-12T16:04:57.203Z] info: PUT /api/comments/68ebcfbace41caac1b4780b2 {"content":"gurri made this anime hi baby"}
+[2025-10-12T16:05:13.588Z] info: PUT /api/comments/68ebcfbace41caac1b4780b2 {"content":"gurri made this anime"}
+[2025-10-12T16:05:23.453Z] info: PUT /api/comments/68ebcfbace41caac1b4780b2 {"content":"gurri made this anime  "}
+[2025-10-12T16:05:32.482Z] info: PUT /api/comments/68ebcfbace41caac1b4780b2 {"content":"gurri made this anime"}
+[2025-10-12T16:07:35.632Z] info: POST /api/likes/toggle/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:07:43.348Z] info: POST /api/likes/toggle/68ea9c0d35ef2c27f06566f6 Request Body Is Empty
+[2025-10-12T16:07:49.825Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f7 Request Body Is Empty
+[2025-10-12T16:14:54.737Z] info: PUT /api/posts/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:15:05.217Z] info: PUT /api/posts/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:39:54.527Z] info: PUT /api/posts/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:40:05.216Z] info: PUT /api/posts/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:40:12.463Z] info: PUT /api/posts/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:45:38.618Z] info: POST /api/likes/toggle/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:45:49.542Z] info: POST /api/likes/toggle/68ea9c0d35ef2c27f06566f6 Request Body Is Empty
+[2025-10-12T16:45:56.721Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f7 Request Body Is Empty
+[2025-10-12T16:47:52.726Z] info: POST /api/likes/toggle/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:47:58.896Z] info: POST /api/likes/toggle/68ea9c0d35ef2c27f06566f6 Request Body Is Empty
+[2025-10-12T16:48:04.135Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f7 Request Body Is Empty
+[2025-10-12T16:48:11.444Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f7 Request Body Is Empty
+[2025-10-12T16:50:16.501Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f7 Request Body Is Empty
+[2025-10-12T16:50:18.537Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f7 Request Body Is Empty
+[2025-10-12T16:50:19.653Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f7 Request Body Is Empty
+[2025-10-12T16:50:37.619Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f7 Request Body Is Empty
+[2025-10-12T16:50:44.929Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f7 Request Body Is Empty
+[2025-10-12T16:50:46.072Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f7 Request Body Is Empty
+[2025-10-12T16:50:53.302Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f Request Body Is Empty
+[2025-10-12T16:51:02.970Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f8 Request Body Is Empty
+[2025-10-12T16:51:05.712Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f7 Request Body Is Empty
+[2025-10-12T16:51:06.788Z] info: POST /api/likes/toggle/68ea9c3535ef2c27f06566f7 Request Body Is Empty
+[2025-10-12T16:56:42.609Z] info: GET /api/likes/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:57:07.661Z] info: GET /api/likes/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:57:40.632Z] info: GET /api/likes/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:57:45.917Z] info: GET /api/likes/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:58:51.635Z] info: GET /api/likes/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T16:59:50.651Z] info: GET /api/likes/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T17:00:52.173Z] info: GET /api/likes/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T17:03:16.342Z] info: GET /api/likes/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T17:03:37.648Z] info: GET /api/likes/68ea9bf835ef2c27f06566f5 Request Body Is Empty
+[2025-10-12T17:14:05.924Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:14:16.815Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:19:49.207Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:19:50.419Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:19:51.692Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:55:38.542Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:55:41.061Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:55:42.570Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:55:45.233Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:55:46.937Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:55:48.706Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:56:21.406Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:56:27.482Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:56:32.293Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:58:17.128Z] info: POST /api/friends/response-to-request/68d825ab604419f1811362bb {"action":"accept"}
+[2025-10-12T17:58:29.073Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T17:58:52.151Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:59:06.999Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:59:23.088Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:59:28.983Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:59:30.872Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:59:32.320Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T17:59:40.216Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"reject"}
+[2025-10-12T17:59:47.411Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"reject"}
+[2025-10-12T17:59:55.055Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:00:00.446Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"reject"}
+[2025-10-12T18:00:05.947Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:00:09.640Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:00:13.832Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:00:30.694Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:00:37.199Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:00:40.959Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:01:14.353Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:01:28.678Z] info: POST /api/friends/response-to-request/68ea941149687b9b45babc51 {"action":"accept"}
+[2025-10-12T18:01:40.561Z] info: POST /api/friends/response-to-request/68ea941149687b9b45babc51 {"action":"reject"}
+[2025-10-12T18:01:51.171Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:02:01.779Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:02:14.165Z] info: POST /api/friends/response-to-request/68ea941149687b9b45babc51 {"action":"accept"}
+[2025-10-12T18:03:08.409Z] info: GET /api/friends/get-friends/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-12T18:10:51.270Z] info: GET /api/friends/get-friends/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-12T18:11:26.499Z] info: GET /api/friends/get-friends/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-12T18:11:41.131Z] info: GET /api/friends/get-friends/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:11:43.155Z] info: GET /api/friends/get-friends/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:12:28.817Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:12:30.035Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:12:48.217Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-12T18:12:52.045Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:12:57.517Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:13:09.990Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:13:11.081Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:13:12.545Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:13:14.738Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-12T18:13:15.999Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-12T18:13:39.876Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-12T18:40:17.593Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-12T18:40:20.384Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-12T18:40:22.041Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-12T18:40:49.214Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:41:00.378Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:41:07.781Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:41:09.034Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:41:49.608Z] info: POST /api/friends/response-to-request/68ea941149687b9b45babc51 {"action":"accept"}
+[2025-10-12T18:41:56.529Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:41:58.327Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:42:05.307Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:42:32.863Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:44:52.823Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:44:54.075Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:45:07.365Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:46:09.598Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:46:10.683Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:47:23.545Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:47:26.651Z] info: POST /api/friends/response-to-request/68ea9807fbfc1de1e15848ae {"action":"accept"}
+[2025-10-12T18:47:50.938Z] info: POST /api/friends/response-to-request/68ea941149687b9b45babc51 {"action":"accept"}
+[2025-10-12T18:48:40.209Z] info: POST /api/friends/response-to-request/68ea941149687b9b45babc51 {"action":"accept"}
+[2025-10-12T18:48:42.081Z] info: POST /api/friends/response-to-request/68ea941149687b9b45babc51 {"action":"accept"}
+[2025-10-12T18:50:11.707Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:50:14.241Z] info: POST /api/friends/toggle-friendship/68ea9807fbfc1de1e15848ae Request Body Is Empty
+[2025-10-12T18:50:16.327Z] info: POST /api/friends/response-to-request/68ea941149687b9b45babc51 {"action":"accept"}

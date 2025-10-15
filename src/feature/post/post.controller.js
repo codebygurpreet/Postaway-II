@@ -82,7 +82,7 @@ export default class PostController {
     }
   }
 
-  
+
   // <<< Get post by ID >>>
   getPostById = async (req, res, next) => {
     try {
@@ -111,6 +111,21 @@ export default class PostController {
 
       if (!postId) throw new ApplicationError("Missing post ID", 400);
       if (data.userId) throw new ApplicationError("You cannot update userId", 400);
+
+      if (data.status) {
+        const validStatuses = ["draft", "published", "archived"];
+
+        if (!validStatuses.includes(data.status)) {
+          throw new ApplicationError("Invalid status value", 400);
+        }
+
+        if (data.status === "draft") {
+          throw new ApplicationError("Restricted to draft — cannot modify published/archived posts", 400);
+        }
+
+        data.status = data.status.toLowerCase();
+      }
+
 
       const updatedPost = await this.postRepository.updatePostById(postId, userId, data);
       if (!updatedPost) throw new ApplicationError("Post not found or update failed", 404);

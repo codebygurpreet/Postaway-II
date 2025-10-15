@@ -1,11 +1,13 @@
-// imported modules
+// Friendship Controller
+
+// Import required packages :-
+// Application modules
 import FriendshipRepository from "./friendship.repository.js";
-import ApplicationError from "../../../utils/applicationError.js";
-
 import UserRepository from "../user/user.repository.js";
-import { ObjectId } from "mongodb";
+import ApplicationError from "../../../utils/applicationError.js";
+import FriendshipModel from "./friendship.model.js";
 
-// controller class
+// Friendship Controller class
 export default class FriendshipController {
 
     constructor() {
@@ -13,58 +15,73 @@ export default class FriendshipController {
         this.userRepository = new UserRepository();
     }
 
+    // <<< Get all friends >>>
     getFriends = async (req, res, next) => {
         try {
-            // logic to get friends
-            const userId = new ObjectId(req.params.userId);
+            const userId = req.params.userId;
+
             const friends = await this.friendshipRepository.getFriends(userId);
+            if (!friends || friends.length === 0) {
+                throw new ApplicationError("No friends found", 404);
+            }
 
             res.status(200).json({
                 success: true,
-                message: friends.length === 0 ? "No friends found" : "Friends retrieved successfully",
+                message: "Friends retrieved successfully",
                 data: friends,
             });
 
         } catch (err) {
             next(err);
         }
+    };
 
-    }
-
+    // <<< Get pending friend requests >>>
     getPendingRequests = async (req, res, next) => {
         try {
-            // logic to get pending requests
-            const userId = new ObjectId(req.userID);
+            const userId = req.userID;
+
             const requests = await this.friendshipRepository.getPendingRequests(userId);
+            if (!requests || requests.length === 0) {
+                throw new ApplicationError("No pending friend requests", 404);
+            }
 
             res.status(200).json({
                 success: true,
-                message: requests.length === 0 ? "No pending friend requests" : "Pending friend requests retrieved successfully",
+                message: "Pending friend requests retrieved successfully",
                 data: requests,
             });
 
         } catch (err) {
             next(err);
         }
-    }
+    };
 
+    // <<< Toggle friendship (add / cancel / unfriend) >>>
     toggleFriendship = async (req, res, next) => {
         try {
-            const userId = new ObjectId(req.userID);
-            const friendId = new ObjectId(req.params.friendId);
+            const userId = req.userID;
+            const friendId = req.params.friendId;
 
             // Prevent self-friendship
-            if (userId.equals(friendId)) {
-                throw new ApplicationError('You cannot add yourself as a friend', 400);
+            if (userId === friendId) {
+                throw new ApplicationError("You cannot add yourself as a friend", 400);
             }
 
+            // Check if friend user exists
             const friend = await this.userRepository.getUserById(friendId);
             if (!friend) {
-                throw new ApplicationError('Friend user not found', 404);
-            };
+                throw new ApplicationError("Friend user not found", 404);
+            }
 
-            // further logic to toggle friendship
-            const result = await this.friendshipRepository.toggleFriendship(userId, friendId);
+            // Create friendship object using model
+            const friendship = new FriendshipModel(userId, friendId, "pending");
+
+            // Toggle friendship logic (add/cancel/unfriend)
+            const result = await this.friendshipRepository.toggleFriendship(friendship);
+            if (!result) {
+                throw new ApplicationError("Failed to process friendship request", 500);
+            }
 
             res.status(200).json({
                 success: true,
@@ -75,36 +92,39 @@ export default class FriendshipController {
         } catch (err) {
             next(err);
         }
+    };
 
-    }
-
+    // <<< Respond to friend request >>>
     responseToRequest = async (req, res, next) => {
         try {
-            const userId = new ObjectId(req.userID);
-            const friendId = new ObjectId(req.params.friendId);
+            const userId = req.userID;
+            const friendId = req.params.friendId;
             const action = req.body.action; // 'accept' or 'reject'
 
-            if (!['accept', 'reject'].includes(action)) {
-                throw new ApplicationError('Invalid action. use "accept" or "reject".', 400);
+            if (!["accept", "reject"].includes(action)) {
+                throw new ApplicationError('Invalid action. Use "accept" or "reject".', 400);
             }
 
+            // Check if friend user exists
             const friend = await this.userRepository.getUserById(friendId);
             if (!friend) {
-                throw new ApplicationError('Friend user not found', 404);
-            };
+                throw new ApplicationError("Friend user not found", 404);
+            }
 
-            // further logic to respond to friend request
+            // Only the receiver (userId) can accept/reject a pending request sent by friendId
             const result = await this.friendshipRepository.responseToRequest(userId, friendId, action);
+            if (!result) {
+                throw new ApplicationError("No friendship request found", 404);
+            }
 
             res.status(200).json({
                 success: true,
                 message: result.message,
-                data: result,
+                data: result.data,
             });
 
         } catch (err) {
             next(err);
         }
-    }
-
+    };
 }

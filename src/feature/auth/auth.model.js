@@ -1,11 +1,12 @@
 // Auth Model
 
 export default class AuthModel {
-  constructor(name, email, password, gender) {
+  constructor(name, email, password, gender, avatar) {
     this.name = name;
     this.email = email.toLowerCase(); // normalize email;
     this.password = password;
-    this.gender = gender
+    this.gender = gender;
+    this.avatar = avatar;
     this.createdAt = new Date();
     this.updatedAt = new Date();
   }

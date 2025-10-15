@@ -84,6 +84,7 @@ export default class UserRepository {
             name: 1,
             email: 1,
             gender: 1,
+            avatar: 1,
           },
         }
       );
