@@ -86,7 +86,7 @@ export default class PostController {
   // <<< Get post by ID >>>
   getPostById = async (req, res, next) => {
     try {
-      const postId = req.params.id;
+      const postId = req.params.postId;
       if (!postId) throw new ApplicationError("Invalid post ID", 400);
 
       const post = await this.postRepository.getPostById(postId);
@@ -106,7 +106,7 @@ export default class PostController {
   updatePostById = async (req, res, next) => {
     try {
       const userId = req.userID;
-      const postId = req.params.id;
+      const postId = req.params.postId;
       const data = req.body;
 
       if (!postId) throw new ApplicationError("Missing post ID", 400);
@@ -144,7 +144,7 @@ export default class PostController {
   deletePostById = async (req, res, next) => {
     try {
       const userId = req.userID;
-      const postId = req.params.id;
+      const postId = req.params.postId;
 
       if (!postId) throw new ApplicationError("Post ID is required", 400);
 

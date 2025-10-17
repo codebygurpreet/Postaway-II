@@ -19,7 +19,7 @@ export default class CommentController {
     createComment = async (req, res, next) => {
         try {
             const userId = req.userID; // user from auth middleware
-            const postId = req.params.id;
+            const postId = req.params.postId;
             const { content } = req.body;
 
             // Validate required fields
@@ -56,7 +56,7 @@ export default class CommentController {
     // <<< Get all comments for a specific post with pagination >>>
     getAllComment = async (req, res, next) => {
         try {
-            const postId = req.params.id;
+            const postId = req.params.postId;
             const page = parseInt(req.query.page) || 1;
             const limit = parseInt(req.query.limit) || 5;
 
@@ -93,7 +93,7 @@ export default class CommentController {
     deleteComment = async (req, res, next) => {
         try {
             const userId = req.userID;
-            const commentId = req.params.id;
+            const commentId = req.params.commentId;
 
             if (!commentId) {
                 throw new ApplicationError("Missing comment ID", 400);

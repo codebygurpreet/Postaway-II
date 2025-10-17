@@ -16,7 +16,7 @@ const commentController = new CommentController();
 // Get all comments for a specific post
 // Purpose: Fetch all comments of a post
 // Middleware: jwtAuth → ensures user is authenticated
-router.get('/:id',
+router.get('/:postId',
     jwtAuth,
     commentController.getAllComment
 );
@@ -24,7 +24,7 @@ router.get('/:id',
 // Add a new comment to a specific post
 // Purpose: Create a comment for a post
 // Middleware: jwtAuth → ensures user is authenticated
-router.post('/:id',
+router.post('/:postId',
     jwtAuth,
     commentController.createComment
 );
@@ -32,7 +32,7 @@ router.post('/:id',
 // Delete a specific comment by ID
 // Purpose: Remove a comment
 // Middleware: jwtAuth → ensures user is authenticated
-router.delete('/:id',
+router.delete('/:commentId',
     jwtAuth,
     commentController.deleteComment
 );

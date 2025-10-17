@@ -42,7 +42,7 @@ router.get("/",
 // Get post by ID
 // Purpose: Fetch a specific post by its ID
 // Middleware: None
-router.get("/:id",
+router.get("/:postId",
     postController.getPostById
 );
 
@@ -50,7 +50,7 @@ router.get("/:id",
 // Purpose: Update a specific post by its ID
 // Middleware: jwtAuth → ensures user is authenticated
 //             upload.none() → ensures only text fields are updated
-router.put("/:id",
+router.put("/:postId",
     upload.none(),
     jwtAuth,
     postController.updatePostById
@@ -59,33 +59,10 @@ router.put("/:id",
 // Delete post by ID
 // Purpose: Delete a specific post by its ID
 // Middleware: jwtAuth → ensures user is authenticated
-router.delete("/:id",
+router.delete("/:postId",
     jwtAuth,
     postController.deletePostById
 );
-
-/* -------------------------------
-   Additional Tasks (commented out)
-----------------------------------
-
-// 1. Filter posts by caption
-router.get("/filter",
-    postController.filterByCaption
-);
-
-// 2. Update post status
-router.patch("/:id/status",
-    upload.none(),
-    jwtAuth,
-    postController.postStatus
-);
-
-// 3. Sort posts based on user engagement and date
-router.get("/sorted",
-    jwtAuth,
-    postController.getSortedPosts
-);
-*/
 
 // Export router
 export default router;
