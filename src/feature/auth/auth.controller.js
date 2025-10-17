@@ -114,10 +114,9 @@ export default class AuthController {
       setAuthCookies(res, accessToken, expiresIn, refreshToken);
 
       return res.status(200).json({
-        message: "Login successful",
+        success: true,
+        message: "Login Successful",
         user: {
-          success: true,
-          message: "Login successful",
           id: user._id,
           name: user.name,
         },

@@ -251,10 +251,14 @@ node server.js
 * Use **Postman / Thunder Client** to test endpoints.
 * Example login response:
 
-```json
+```js
 {
-  "success": true,
-  "message": "Login successful",
+  success: true,
+  message: "Login Successful",
+  user: {
+    id: user._id,
+    name: user.name,
+  },
 }
 ```
 
