@@ -39,7 +39,7 @@ export default class FriendshipController {
     // <<< Get pending friend requests >>>
     getPendingRequests = async (req, res, next) => {
         try {
-            const userId = req.userID;
+            const userId = req.userID.toString();
 
             const requests = await this.friendshipRepository.getPendingRequests(userId);
             if (!requests || requests.length === 0) {
@@ -64,7 +64,7 @@ export default class FriendshipController {
             const friendId = req.params.friendId;
 
             // Prevent self-friendship
-            if (userId === friendId) {
+            if (userId.toString() === friendId) {
                 throw new ApplicationError("You cannot add yourself as a friend", 400);
             }
 

@@ -1237,3 +1237,139 @@
 [2025-10-15T19:40:34.660Z] info: POST /api/users/otp/send {"email":"gurri304@gmail.com"}
 [2025-10-15T19:41:14.277Z] info: POST /api/users/otp/verify {"email":"gurri304@gmail.com","otp":"181713"}
 [2025-10-15T19:42:33.713Z] info: POST /api/users/otp/reset-password {"email":"gurri304@gmail.com","newPassword":"@Password2","resetToken":"7dfa2456059356e8f1bc2e2df800e9e601d36de5523f9eb9829ecbf99703660d"}
+[2025-10-17T17:28:43.433Z] info: POST /api/users/logout Request Body Is Empty
+[2025-10-17T17:29:01.200Z] info: POST /api/users/logout Request Body Is Empty
+[2025-10-17T17:29:07.340Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-10-17T17:29:12.622Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-10-17T17:33:35.375Z] info: POST /api/users/otp/send {"email":"gurri304@gmail.com"}
+[2025-10-17T17:34:24.019Z] info: POST /api/users/otp/verify {"email":"gurri304@gmail.com","otp":"181713"}
+[2025-10-17T17:34:27.817Z] info: POST /api/users/otp/verify {"email":"gurri304@gmail.com","otp":"259297"}
+[2025-10-17T17:34:44.624Z] info: POST /api/users/otp/reset-password {"email":"gurri304@gmail.com","newPassword":"@Password2","resetToken":"e26ff007e440f99f517dc82c5a30b61534ee72ceac126664bcdf5c47f38b5121"}
+[2025-10-17T17:35:00.084Z] info: GET /api/users/get-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:35:18.183Z] info: GET /api/users/get-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:35:28.897Z] info: GET /api/users/get-details/68f27cb203fe1f864edb265a Request Body Is Empty
+[2025-10-17T17:35:48.851Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-17T17:35:58.739Z] info: PUT /api/users/update-details/68ea941149687b9b45babc51 Request Body Is Empty
+[2025-10-17T17:36:16.101Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:36:24.446Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:36:30.496Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:36:40.181Z] info: GET /api/users/get-all-details Request Body Is Empty
+[2025-10-17T17:45:58.115Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:46:44.185Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:49:18.854Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:52:07.519Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:52:13.805Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:52:22.227Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:58:23.551Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:58:53.975Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T17:59:43.723Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:00:01.772Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:00:24.051Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:03:52.425Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:05:41.275Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:05:51.953Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:05:53.424Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:06:23.008Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:06:27.617Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:15:29.183Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-10-17T18:15:39.803Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-10-17T18:15:53.660Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:16:06.286Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:16:12.031Z] info: PUT /api/users/update-details/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:16:37.830Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-17T18:16:53.401Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-17T18:17:22.383Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-17T18:17:23.496Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-17T18:17:36.678Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-17T18:19:26.217Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-17T18:19:56.162Z] info: GET /api/posts/all?page=1&limit=5 Request Body Is Empty
+[2025-10-17T18:20:00.094Z] info: GET /api/posts/all?page=1&limit=5 Request Body Is Empty
+[2025-10-17T18:20:14.811Z] info: GET /api/posts/all?page=2&limit=5 Request Body Is Empty
+[2025-10-17T18:20:21.201Z] info: GET /api/posts/all?page=1&limit=5 Request Body Is Empty
+[2025-10-17T18:20:28.765Z] info: GET /api/posts/all?page=1&limit=2 Request Body Is Empty
+[2025-10-17T18:20:38.889Z] info: GET /api/posts/all?page=2&limit=2 Request Body Is Empty
+[2025-10-17T18:20:48.421Z] info: GET /api/posts/all?page=1&limit=5 Request Body Is Empty
+[2025-10-17T18:21:12.170Z] info: GET /api/posts/68f28805ad988acce757ccd5 Request Body Is Empty
+[2025-10-17T18:21:22.112Z] info: GET /api/posts/68f28805ad988acce757ccd8 Request Body Is Empty
+[2025-10-17T18:21:26.789Z] info: GET /api/posts/68f28805ad988acce757ccd5 Request Body Is Empty
+[2025-10-17T18:21:56.164Z] info: GET /api/posts Request Body Is Empty
+[2025-10-17T18:22:06.765Z] info: GET /api/posts Request Body Is Empty
+[2025-10-17T18:22:16.286Z] info: GET /api/posts Request Body Is Empty
+[2025-10-17T18:23:39.883Z] info: PUT /api/posts/68f28805ad988acce757ccd5 Request Body Is Empty
+[2025-10-17T18:23:51.901Z] info: PUT /api/posts/68f28805ad988acce757ccd5 Request Body Is Empty
+[2025-10-17T18:23:59.006Z] info: PUT /api/posts/68f28805ad988acce757ccd5 Request Body Is Empty
+[2025-10-17T18:24:03.765Z] info: PUT /api/posts/68f28805ad988acce757ccd5 Request Body Is Empty
+[2025-10-17T18:24:20.705Z] info: PUT /api/posts/68f28805ad988acce757ccd5 Request Body Is Empty
+[2025-10-17T18:24:47.981Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-17T18:25:09.670Z] info: DELETE /api/posts/68f289efad988acce757ccda Request Body Is Empty
+[2025-10-17T18:25:45.081Z] info: DELETE /api/posts/68f289efad988acce757ccdj Request Body Is Empty
+[2025-10-17T18:25:48.811Z] info: DELETE /api/posts/68f289efad988acce757ccd Request Body Is Empty
+[2025-10-17T18:26:06.215Z] info: DELETE /api/posts/68f289efad988acce757ccd Request Body Is Empty
+[2025-10-17T18:26:21.986Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-17T18:26:36.690Z] info: DELETE /api/posts/68f28a4dad988acce757ccdb Request Body Is Empty
+[2025-10-17T18:26:38.214Z] info: DELETE /api/posts/68f28a4dad988acce757ccdb Request Body Is Empty
+[2025-10-17T18:28:41.252Z] info: POST /api/posts/ Request Body Is Empty
+[2025-10-17T18:29:07.976Z] info: DELETE /api/posts/68f28ad9ad988acce757ccdc Request Body Is Empty
+[2025-10-17T18:29:15.042Z] info: DELETE /api/posts/68f28ad9ad988acce757ccdc Request Body Is Empty
+[2025-10-17T18:29:21.298Z] info: DELETE /api/posts/68f28ad9ad988acce757ccdc Request Body Is Empty
+[2025-10-17T18:30:11.332Z] info: POST /api/comments/68f28805ad988acce757ccd5 {"content":"i love this anime"}
+[2025-10-17T18:30:27.666Z] info: POST /api/comments/68f28805ad988acce757ccd5 {"content":"i love this anime more"}
+[2025-10-17T18:30:50.725Z] info: POST /api/comments/68f28833ad988acce757ccd8 {"content":"i love this car"}
+[2025-10-17T18:30:56.722Z] info: POST /api/comments/68f28833ad988acce757ccd8 {"content":"i love this car more"}
+[2025-10-17T18:31:14.333Z] info: GET /api/comments/68ea9d2f35ef2c27f06566f9?page=1&limit=5 Request Body Is Empty
+[2025-10-17T18:31:27.902Z] info: GET /api/comments/68f28805ad988acce757ccd5?page=1&limit=5 Request Body Is Empty
+[2025-10-17T18:31:56.562Z] info: POST /api/comments/68f28833ad988acce757ccd8 {"content":"i love this car more more"}
+[2025-10-17T18:33:08.986Z] info: DELETE /api/comments/68ebcfd8ce41caac1b4780b5 Request Body Is Empty
+[2025-10-17T18:33:17.020Z] info: DELETE /api/comments/68ebcfd8ce41caac1b4780b5 Request Body Is Empty
+[2025-10-17T18:33:18.873Z] info: DELETE /api/comments/68ebcfd8ce41caac1b4780b5 Request Body Is Empty
+[2025-10-17T18:33:29.885Z] info: DELETE /api/comments/68f28b9cad988acce757cce1 Request Body Is Empty
+[2025-10-17T18:33:33.663Z] info: DELETE /api/comments/68f28b9cad988acce757cce1 Request Body Is Empty
+[2025-10-17T18:34:04.378Z] info: PUT /api/comments/68f28b33ad988acce757ccdd {"content":"gurri made this anime"}
+[2025-10-17T18:34:12.705Z] info: PUT /api/comments/68f28b33ad988acce757ccdd {"content":"gurri made this anime"}
+[2025-10-17T18:34:54.650Z] info: POST /api/likes/toggle/68f28805ad988acce757ccd5 Request Body Is Empty
+[2025-10-17T18:35:05.147Z] info: POST /api/likes/toggle/68f28805ad988acce757ccd5 Request Body Is Empty
+[2025-10-17T18:35:18.550Z] info: POST /api/likes/toggle/68f28833ad988acce757ccd8 Request Body Is Empty
+[2025-10-17T18:35:22.068Z] info: POST /api/likes/toggle/68f28833ad988acce757ccd8 Request Body Is Empty
+[2025-10-17T18:35:23.022Z] info: POST /api/likes/toggle/68f28833ad988acce757ccd8 Request Body Is Empty
+[2025-10-17T18:35:30.919Z] info: POST /api/likes/toggle/68f28833ad988acce757ccd8 Request Body Is Empty
+[2025-10-17T18:35:42.795Z] info: GET /api/likes/68f28805ad988acce757ccd5 Request Body Is Empty
+[2025-10-17T18:36:46.414Z] info: POST /api/friends/toggle-friendship/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:37:00.457Z] info: POST /api/friends/toggle-friendship/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:37:06.591Z] info: POST /api/friends/toggle-friendship/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:37:54.717Z] info: POST /api/friends/toggle-friendship/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:38:03.136Z] info: POST /api/friends/toggle-friendship/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:38:10.034Z] info: POST /api/friends/toggle-friendship/68f27cb203fe1f864edb265a Request Body Is Empty
+[2025-10-17T18:38:18.876Z] info: POST /api/friends/toggle-friendship/68f27cb203fe1f864edb265a Request Body Is Empty
+[2025-10-17T18:38:21.993Z] info: POST /api/friends/toggle-friendship/68f27cb203fe1f864edb265a Request Body Is Empty
+[2025-10-17T18:38:47.169Z] info: GET /api/friends/get-friends/68f27cb203fe1f864edb265a Request Body Is Empty
+[2025-10-17T18:38:52.907Z] info: GET /api/friends/get-friends/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:38:58.730Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-17T18:39:04.097Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-17T18:39:11.551Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-17T18:40:38.523Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-17T18:40:39.976Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-17T18:40:44.760Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-17T18:40:51.050Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-17T18:40:52.287Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-17T18:40:57.708Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-17T18:41:55.866Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-17T18:42:03.899Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-17T18:42:08.907Z] info: GET /api/friends/get-pending-requests Request Body Is Empty
+[2025-10-17T18:42:24.991Z] info: GET /api/friends/get-friends/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:42:51.672Z] info: POST /api/friends/response-to-request/68f27c9c03fe1f864edb2659 {"action":"accept"}
+[2025-10-17T18:42:57.829Z] info: POST /api/friends/response-to-request/68f27c9c03fe1f864edb2659 {"action":"accept"}
+[2025-10-17T18:42:59.578Z] info: POST /api/friends/response-to-request/68f27c9c03fe1f864edb2659 {"action":"accept"}
+[2025-10-17T18:44:41.419Z] info: POST /api/friends/response-to-request/68f27c9c03fe1f864edb2659 {"action":"accept"}
+[2025-10-17T18:49:27.935Z] info: POST /api/friends/response-to-request/68f27c9c03fe1f864edb2659 {"action":"accept"}
+[2025-10-17T18:50:23.452Z] info: POST /api/friends/response-to-request/68f27c9c03fe1f864edb2659 {"action":"accept"}
+[2025-10-17T18:51:49.055Z] info: POST /api/friends/response-to-request/68f27c9c03fe1f864edb2659 {"action":"accept"}
+[2025-10-17T18:51:55.559Z] info: POST /api/friends/response-to-request/68f27c9c03fe1f864edb2659 {"action":"accept"}
+[2025-10-17T18:52:21.491Z] info: POST /api/friends/response-to-request/68f27c9c03fe1f864edb2659 {"action":"reject"}
+[2025-10-17T18:52:25.131Z] info: GET /api/friends/get-friends/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:52:29.934Z] info: GET /api/friends/get-friends/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:53:04.013Z] info: GET /api/friends/get-friends/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:53:08.963Z] info: GET /api/friends/get-friends/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:53:10.129Z] info: GET /api/friends/get-friends/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:53:14.462Z] info: GET /api/friends/get-friends/68f27c9c03fe1f864edb2659 Request Body Is Empty
+[2025-10-17T18:53:39.002Z] info: POST /api/users/logout-all-devices Request Body Is Empty
+[2025-10-17T18:53:42.228Z] info: POST /api/users/logout-all-devices Request Body Is Empty

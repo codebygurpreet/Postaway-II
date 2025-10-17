@@ -13,7 +13,6 @@ import userRoutes from "./src/feature/user/user.routes.js";
 import postsRoutes from "./src/feature/post/post.routes.js";
 import commentRoutes from "./src/feature/comment/comment.routes.js";
 import likeRoutes from "./src/feature/like/like.routes.js";
-import bookmarkRoutes from "./src/feature/bookmark/bookmark.routes.js";
 import friendshipRoutes from "./src/feature/friendship/friendship.routes.js";
 
 // Import MongoDB
@@ -34,7 +33,6 @@ app.use("/api/users", userRoutes);
 app.use("/api/posts", postsRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);
-app.use("/api/bookmark", bookmarkRoutes);
 app.use("/api/friends", friendshipRoutes);
 
 // Health check / root route

@@ -4,6 +4,7 @@
 // Application modules 
 import UserRepository from "./user.repository.js";
 import ApplicationError from "../../../utils/applicationError.js";
+import { ObjectId } from "mongodb";
 
 
 // User Controller class
@@ -70,7 +71,7 @@ export default class UserController {
       }
 
       // Ensure user is updating their own account
-      if (userIdFromSignIn !== userId) {
+      if (userIdFromSignIn.toString() !== userId) {
         throw new ApplicationError("Unauthorized: Cannot update another user", 403);
       }
 

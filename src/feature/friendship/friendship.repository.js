@@ -25,7 +25,7 @@ export default class FriendshipRepository {
         const requests = await collection.find({
             status: "accepted",
             $or: [
-                { userId: userId },
+                { userId: new ObjectId(userId) },
                 { friendId: userId }
             ]
         }).toArray();
@@ -95,8 +95,8 @@ export default class FriendshipRepository {
     responseToRequest = async (userId, friendId, action) => {
         const collection = await this.getCollection();
 
-        const requesterId = friendId;
-        const receiverId = userId;
+        const requesterId = new ObjectId (friendId);
+        const receiverId = userId.toString();
 
         // Check if pending friendship exists
         const existing = await collection.findOne({
